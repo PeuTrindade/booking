@@ -1,0 +1,31 @@
+#form {
+    margin-top: 3rem;
+}
+
+#form label {
+    color: #00968c;
+}
+
+#form input {
+    width: 15rem;
+    border: none;
+    outline: none;
+    background-color: #e6e6e6;
+    height: 2rem;
+    border-radius: .5rem;
+    padding-left: .3rem;
+}
+
+#form textarea {
+    border: none;
+    outline: none;
+    background-color: #e6e6e6;
+    border-radius: .5rem;
+    padding-left: .3rem;
+    padding-top: .3rem;
+}
+
+#form input[type=submit] {
+    background-color: #00968c;
+    width: 15.5rem;
+}

@@ -1,7 +1,7 @@
 <?php
 /* @var $this SiteController */
-
-$this->pageTitle=Yii::app()->name;
+Yii::app()->name = 'Booking';
+$this->pageTitle=Yii::app()->name . ' - Home';
 ?>
 
 <style>

@@ -38,5 +38,5 @@ $this->pageTitle = Yii::app()->name . ' - Login';
 			<?php $this->endWidget(); ?>
 		</div>
 	</div>
-	<img src="images/loginImage.jpg" alt="loginImage"/>
+	<img src="images/loginImage.jpg" alt="Imagem página de login"/>
 </section>
