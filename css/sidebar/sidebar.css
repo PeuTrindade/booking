@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+.sidebarContainer  {
+    z-index: 10000;
+    background-color: #8AD1CB;
+    height: 100vh;
+    width: 30%;
+    max-width: 15rem;
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow: 0px 0px 15px rgb(61, 61, 61);
+}
+
+.sidebarContainer h3 {
+    font-family: 'Anton', sans-serif;
+    font-weight: normal;
+    margin-left: 5%;
+    font-size: 1.8rem;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+}
+
+.sidebar {
+    position: absolute;
+    left: -25px;
+}
+
+#yw0 li {
+    list-style: none;
+    margin-bottom: 2rem;
+    padding-bottom: .5rem;
+    border-bottom: 2px solid black;
+}
+
+#yw0 a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}

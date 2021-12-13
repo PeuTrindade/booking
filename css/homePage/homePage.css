@@ -1,0 +1,14 @@
+.homeContainer {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 3rem;
+    margin-top: 2rem;
+}
+
+.homeContainer h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0;
+}
+
+.homeContainer p {
+    margin-top: .3rem;
+}
