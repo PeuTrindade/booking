@@ -10,7 +10,7 @@ $image = CHtml::encode($data->image);
 
 <div class='room'>
     <img src=<?php echo $image; ?> alt='Imagem da <?php echo $name; ?>'>
-    <h3><?php echo $name; ?></h3>
+    <h3><a class='redirectLink' href='index.php?r=room/view&id=<?php echo $id;?>'><?php echo $name; ?></a></h3>
     <h4>ID da sala: <?php echo $id; ?></h4>
     <div class='roomLinks'>
         <a href='index.php?r=room/update&id=<?php echo $id; ?>'>Atualizar sala</a>

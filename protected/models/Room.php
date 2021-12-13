@@ -108,10 +108,11 @@ class Room extends CActiveRecord
 		return parent::model($className);
 	}
 
-	public function checkRoomName($fieldName){
+	public function checkRoomName($fieldName,$id=null){
 		if(isset($fieldName)){
 			$searchExpression = Room::model()->find('name=:roomName',array(':roomName'=>$fieldName));
-			if(isset($searchExpression)){
+			
+			if(isset($searchExpression) && $searchExpression->id !== $id){
 				$this->addError('name','Esse nome já existe!');
 				return false;
 			} else {

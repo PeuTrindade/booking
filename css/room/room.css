@@ -7,6 +7,15 @@
     margin-right: 2rem;
 }
 
+.redirectLink {
+    text-decoration: none;
+    color: black;
+}
+
+.redirectLink:hover {
+    color: #00968c;
+}
+
 .room img {
     width: 100%;
     height: 45%;
@@ -34,4 +43,10 @@
     margin-bottom: .6rem;
     padding: .5rem;
     text-align: center;
+}
+
+@media screen and (max-width:862px){
+    .room {
+        margin-bottom: 2rem;
+    }
 }

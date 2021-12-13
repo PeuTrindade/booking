@@ -53,13 +53,15 @@ class RoomController extends Controller
 					$model->attributes = $_POST['Room'];
 					$fieldName = $_POST['Room']['name'];
 
-					if($model->checkRoomName($fieldName) && $model->validate()) {
+					if($model->checkRoomName($fieldName,$id) && $model->validate()) {
 						$model->save();
 						$this->redirect('index.php?r=room/index');
 					}
 				}
 				$this->render('update',array('model'=>$model));	
-			} 
+			} else {
+				throw new CHttpException(404,'Essa página requisitada não existe!');
+			}
 		} else {
 			$this->redirect('index.php?r=site/login');
 		}	
@@ -73,6 +75,21 @@ class RoomController extends Controller
 			if(isset($model) && isset($id)){
 				$model->delete();
 				$this->redirect('index.php?r=room/index');
+			} else {
+				throw new CHttpException(404,'Essa página requisitada não existe!');
+			}
+		} else {
+			$this->redirect('index.php?r=site/login');
+		}
+	}
+
+	public function actionView($id) {
+		$user = Yii::app()->user->id;
+		$model = $this->loadRoom();
+
+		if(isset($user)){
+			if(isset($model) && isset($id)){
+				$this->render('view',array('model'=>$model));
 			} else {
 				throw new CHttpException(404,'Essa página requisitada não existe!');
 			}
