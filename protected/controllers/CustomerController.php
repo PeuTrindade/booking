@@ -1,6 +1,6 @@
 <?php
 
-class RoomController extends Controller
+class CustomerController extends Controller
 {
 	public function filters() {
 		return array(
@@ -26,9 +26,9 @@ class RoomController extends Controller
 			'order'=>'id'
 		));
 
-		$dataProvider = new CActiveDataProvider('Room', array(
+		$dataProvider = new CActiveDataProvider('Customer', array(
 			'pagination'=>array(
-				'pageSize'=>3,
+				'pageSize'=>5,
 			),
 			'criteria'=>$criteria,
 		));
@@ -37,32 +37,54 @@ class RoomController extends Controller
 	}
 
 	public function actionCreate() {
-		$model = new Room;
+		$model = new Customer;
 			
-		if(isset($_POST['Room'])) {
-			$model->attributes = $_POST['Room'];
-			$fieldName = $_POST['Room']['name'];
+		if(isset($_POST['Customer'])) {
+			$model->attributes = $_POST['Customer'];
+			$fieldEmail = $_POST['Customer']['email'];
 			
-			if($model->checkRoomName($fieldName) && $model->validate()) {
+			if($model->checkCustomerEmail($fieldEmail) && $model->validate()) {
 				$model->save();
-				$this->redirect('index.php?r=room/index');
+				$this->redirect('index.php?r=customer/index');
 			}
     	}
-		
+
 		$this->render('create',array('model'=>$model));
 	}
 
-	public function actionUpdate($id){
-		$model = $this->loadRoom();
+	public function actionView($id) {
+		$model = $this->loadCustomer();
 
 		if(isset($model) && isset($id)){
-			if(isset($_POST['Room'])){
-				$model->attributes = $_POST['Room'];
-				$fieldName = $_POST['Room']['name'];
+			$model->formatDate('d/m/Y');
+			$this->render('view',array('model'=>$model));
+		} else {
+			throw new CHttpException(404,'Essa página requisitada não existe!');
+		}
+	}
 
-				if($model->checkRoomName($fieldName,$id) && $model->validate()) {
+	public function actionDelete($id) {
+		$model = $this->loadCustomer();
+
+		if(isset($model) && isset($id)){
+			$model->delete();
+			$this->redirect('index.php?r=customer/index');
+		} else {
+			throw new CHttpException(404,'Essa página requisitada não existe!');
+		}
+	}
+
+	public function actionUpdate($id) {
+		$model = $this->loadCustomer();
+
+		if(isset($model) && isset($id)){
+			if(isset($_POST['Customer'])){
+				$model->attributes = $_POST['Customer'];
+				$fieldEmail = $_POST['Customer']['email'];
+
+				if($model->checkCustomerEmail($fieldEmail,$id) && $model->validate()) {
 					$model->save();
-					$this->redirect('index.php?r=room/index');
+					$this->redirect('index.php?r=customer/index');
 				}
 			}
 			$this->render('update',array('model'=>$model));	
@@ -71,32 +93,11 @@ class RoomController extends Controller
 		}
 	}
 
-	public function actionDelete($id) {
-		$model = $this->loadRoom();
+	public function loadCustomer() {
+		$customerId = $_GET['id'];
 
-		if(isset($model) && isset($id)){
-			$model->delete();
-			$this->redirect('index.php?r=room/index');
-		} else {
-			throw new CHttpException(404,'Essa página requisitada não existe!');
-		}
-	}
-
-	public function actionView($id) {
-		$model = $this->loadRoom();
-
-		if(isset($model) && isset($id)){
-			$this->render('view',array('model'=>$model));
-		} else {
-			throw new CHttpException(404,'Essa página requisitada não existe!');
-		}
-	}
-
-	public function loadRoom() {
-		$roomId = $_GET['id'];
-
-		if(isset($roomId)){
-			$model = Room::model()->findByPk($roomId);
+		if(isset($customerId)){
+			$model = Customer::model()->findByPk($customerId);
 			return $model;
 		} else {
 			throw new CHttpException(404,'Essa página requisitada não existe!');

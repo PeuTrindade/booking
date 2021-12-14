@@ -1,26 +1,27 @@
 <?php
 
 /**
- * This is the model class for table "rooms".
+ * This is the model class for table "customers".
  *
- * The followings are the available columns in table 'rooms':
+ * The followings are the available columns in table 'customers':
  * @property integer $id
  * @property string $name
- * @property string $description
- * @property string $image
- * @property integer $valuePerHour
+ * @property integer $personCode
+ * @property string $email
+ * @property integer $phoneNumber
+ * @property string $birthday
  *
  * The followings are the available model relations:
  * @property Reservations[] $reservations
  */
-class Room extends CActiveRecord
+class Customer extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'rooms';
+		return 'customers';
 	}
 
 	/**
@@ -31,14 +32,13 @@ class Room extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name,image,description,valuePerHour','required'),
-			array('valuePerHour', 'numerical', 'integerOnly'=>true),
-			array('name', 'length', 'max'=>55),
-			array('image', 'length', 'max'=>255),
-			array('description', 'safe'),
+			array('name,email,personCode,phoneNumber,birthday','required'),
+			array('personCode, phoneNumber', 'numerical', 'integerOnly'=>true),
+			array('name, email', 'length', 'max'=>255),
+			array('birthday', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, description, image, valuePerHour', 'safe', 'on'=>'search'),
+			array('id, name, personCode, email, phoneNumber, birthday', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -50,7 +50,7 @@ class Room extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'reservations' => array(self::HAS_MANY, 'Reservations', 'roomId'),
+			'reservations' => array(self::HAS_MANY, 'Reservations', 'customerId'),
 		);
 	}
 
@@ -62,9 +62,10 @@ class Room extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'name' => 'Name',
-			'description' => 'Description',
-			'image' => 'Image',
-			'valuePerHour' => 'Value Per Hour',
+			'personCode' => 'Person Code',
+			'email' => 'Email',
+			'phoneNumber' => 'Phone Number',
+			'birthday' => 'Birthday',
 		);
 	}
 
@@ -88,9 +89,10 @@ class Room extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('name',$this->name,true);
-		$criteria->compare('description',$this->description,true);
-		$criteria->compare('image',$this->image,true);
-		$criteria->compare('valuePerHour',$this->valuePerHour);
+		$criteria->compare('personCode',$this->personCode);
+		$criteria->compare('email',$this->email,true);
+		$criteria->compare('phoneNumber',$this->phoneNumber);
+		$criteria->compare('birthday',$this->birthday,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -101,19 +103,19 @@ class Room extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Room the static model class
+	 * @return Customer the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
 	}
 
-	public function checkRoomName($fieldName,$id=null){
-		if(isset($fieldName)){
-			$searchExpression = Room::model()->find('name=:roomName',array(':roomName'=>$fieldName));
+	public function checkCustomerEmail($fieldEmail,$id=null){
+		if(isset($fieldEmail)){
+			$searchExpression = Customer::model()->find('email=:customerEmail',array(':customerEmail'=>$fieldEmail));
 			
 			if(isset($searchExpression) && $searchExpression->id !== $id){
-				$this->addError('name','Esse nome já existe!');
+				$this->addError('email','Esse email já foi cadastrado!');
 				return false;
 			} else {
 				return true;
@@ -121,11 +123,8 @@ class Room extends CActiveRecord
 		}
 	}
 
-	// public function uploadImage($file) {
-	// 	$random = rand(0,9999);
-	// 	$fileName = $random.'-'.$file;
-	// 	$this->image = $fileName;
-		
-	// 	var_dump($file);
-	// }
+	public function formatDate($dateFormat) {
+		$date = new DateTime($this->birthday);
+		$this->birthday = $date->format($dateFormat);
+	}
 }

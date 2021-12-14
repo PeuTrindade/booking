@@ -1,0 +1,15 @@
+.createCustomerContainer {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 3rem;
+    margin-top: 2rem;
+}
+
+.createCustomerContainer h1 {
+    font-size: 1.8rem;
+    color: #00968c;
+    margin-bottom: 0;
+}
+
+.createCustomerContainer p {
+    margin-top: .3rem;
+}

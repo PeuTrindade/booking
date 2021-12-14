@@ -2,9 +2,25 @@
 
 class SiteController extends Controller
 {
-	/**
-	 * Declares class-based actions.
-	 */
+	public function filters() {
+		return array(
+			'accessControl',
+		);
+	}
+
+	public function accessRules() {
+		return array(
+			array('deny',
+				'actions'=>array('index'),
+				'users'=>array('?'),
+			),
+			array('allow', 
+				'actions'=>array('index'),
+				'users'=>array('@'),
+			),
+		);
+	}
+
 	public function actions()
 	{
 		return array(
@@ -21,23 +37,10 @@ class SiteController extends Controller
 		);
 	}
 
-	/**
-	 * This is the default 'index' action that is invoked
-	 * when an action is not explicitly requested by users.
-	 */
 	public function actionIndex() {
-		$user = Yii::app()->user->id;
-
-		if(isset($user)){
-			$this->render('index');
-		} else {
-			$this->redirect('index.php?r=site/login');
-		}
+		$this->render('index');
 	}
 
-	/**
-	 * This is the action to handle external exceptions.
-	 */
 	public function actionError()
 	{
 		if($error=Yii::app()->errorHandler->error)
@@ -49,11 +52,7 @@ class SiteController extends Controller
 		}
 	}
 
-	/**
-	 * Displays the contact page
-	 */
-	public function actionContact()
-	{
+	public function actionContact() {
 		$model=new ContactForm;
 		if(isset($_POST['ContactForm']))
 		{
@@ -75,9 +74,6 @@ class SiteController extends Controller
 		$this->render('contact',array('model'=>$model));
 	}
 
-	/**
-	 * Displays the login page
-	 */
 	public function actionLogin() {
 		$model = new LoginForm;
 
@@ -96,11 +92,7 @@ class SiteController extends Controller
 		$this->render('login',array('model'=>$model));
 	}
 
-	/**
-	 * Logs out the current user and redirect to homepage.
-	 */
-	public function actionLogout()
-	{
+	public function actionLogout() {
 		Yii::app()->user->logout();
 		$this->redirect('index.php?r=site/login');
 	}

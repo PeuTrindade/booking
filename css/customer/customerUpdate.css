@@ -1,0 +1,15 @@
+.updateCustomerContainer {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 3rem;
+    margin-top: 2rem;
+}
+
+.updateCustomerContainer h1 {
+    font-size: 1.8rem;
+    color: #00968c;
+    margin-bottom: 0;
+}
+
+.updateCustomerContainer p {
+    margin-top: .3rem;
+}

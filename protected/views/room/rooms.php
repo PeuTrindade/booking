@@ -14,6 +14,6 @@ $image = CHtml::encode($data->image);
     <h4>ID da sala: <?php echo $id; ?></h4>
     <div class='roomLinks'>
         <a href='index.php?r=room/update&id=<?php echo $id; ?>'>Atualizar sala</a>
-        <a href='index.php?r=room/deleteRoom&id=<?php echo $id; ?>'>Deletar sala</a>
+        <a href='index.php?r=room/delete&id=<?php echo $id; ?>'>Deletar sala</a>
     </div>
 </div>
