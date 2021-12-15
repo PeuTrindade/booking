@@ -16,6 +16,21 @@
     padding-left: .3rem;
 }
 
+#Room_image {
+    display: none;
+}
+
+#form label[for=Room_image] {
+    background-color: #00968c;
+    color: white;
+    padding: .5rem;
+    display: inline-block;
+    border-radius: .5rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+
 #form textarea {
     border: none;
     outline: none;

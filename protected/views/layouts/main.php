@@ -23,7 +23,7 @@
 						array('label'=>'Home', 'url'=>array('/site/index')),
 						array('label'=>'Clientes', 'url'=>array('/customer/index')),
 						array('label'=>'Salas', 'url'=>array('/room/index')),
-						array('label'=>'Reservas', 'url'=>array('/site/page', 'view'=>'about')),
+						array('label'=>'Reservas', 'url'=>array('/reservation/index')),
 						array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 					),
 				)); ?>
@@ -34,5 +34,6 @@
 	</main>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src='js/uploadImage.js'></script>
 </body>
 </html>

@@ -31,10 +31,11 @@ class Room extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name,image,description,valuePerHour','required'),
+			array('name,description,valuePerHour','required'),
 			array('valuePerHour', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>55),
-			array('image', 'length', 'max'=>255),
+			array('image', 'required','on'=>'create'),
+			array('image','file','types'=>'jpg, gif, png', 'allowEmpty'=>false,'on'=>'create'),
 			array('description', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -67,6 +68,13 @@ class Room extends CActiveRecord
 			'valuePerHour' => 'Value Per Hour',
 		);
 	}
+
+	public function scenarios() {
+        $scenarios = parent::scenarios();
+        $scenarios['create'] = ['image'];
+		
+		return $scenarios;
+    }
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
@@ -110,7 +118,7 @@ class Room extends CActiveRecord
 
 	public function checkRoomName($fieldName,$id=null){
 		if(isset($fieldName)){
-			$searchExpression = Room::model()->find('name=:roomName',array(':roomName'=>$fieldName));
+			$searchExpression = self::model()->find('name=:roomName',array(':roomName'=>$fieldName));
 			
 			if(isset($searchExpression) && $searchExpression->id !== $id){
 				$this->addError('name','Esse nome já existe!');
@@ -121,11 +129,19 @@ class Room extends CActiveRecord
 		}
 	}
 
-	// public function uploadImage($file) {
-	// 	$random = rand(0,9999);
-	// 	$fileName = $random.'-'.$file;
-	// 	$this->image = $fileName;
-		
-	// 	var_dump($file);
-	// }
+	public function beforeUploadImage($fieldFile) {
+		if(isset($fieldFile)){
+			$this->image = $fieldFile->name;
+		}
+	}
+
+	public function uploadImage($fieldFile) {
+		if(!empty($fieldFile)){
+			$random = rand(0,9999);
+			$fileName = $random.'-'.$fieldFile;
+			$this->image = $fileName;
+
+			$fieldFile->saveAs('uploads/'.$fileName); 
+		}
+	}
 }

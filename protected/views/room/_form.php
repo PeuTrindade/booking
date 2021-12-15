@@ -11,10 +11,6 @@
 	'htmlOptions'=>array(
 		'enctype'=>'multipart/form-data'
 	),
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// See class documentation of CActiveForm for details on this,
-	// you need to use the performAjaxValidation()-method described there.
 	'enableAjaxValidation'=>false,
 )); ?>
 
@@ -26,9 +22,9 @@
 		<?php echo $form->error($model,'name'); ?>
 	</div>
 
-	<div class="row">
+	<div id='imageRow' class="row">
 		<input id='imageInfo' value='<?php echo $model->image; ?>' type='hidden'/>
-		<?php echo $form->labelEx($model,'Imagem'); ?>
+		<?php echo $form->labelEx($model,'image'); ?>
 		<?php echo $form->fileField($model,'image'); ?>
 		<?php echo $form->error($model,'image'); ?>
 	</div>

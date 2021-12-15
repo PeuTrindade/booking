@@ -13,7 +13,7 @@ $valuePerHour = $model->valuePerHour;
 </style>
 
 <section class='viewRoomContainer'>
-    <img src='<?php echo $image; ?>' alt='Imagem da <?php echo $name;?>'>
+    <img src='uploads/<?php echo $image; ?>' alt='Imagem da <?php echo $name;?>'>
     <h1><?php echo $name; ?></h1>
     <h4>ID da sala: <?php echo $id; ?></h4>
     <h4>Valor por hora: R$<?php echo $valuePerHour; ?></h4>

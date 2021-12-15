@@ -84,7 +84,7 @@ class CustomerController extends Controller
 
 				if($model->checkCustomerEmail($fieldEmail,$id) && $model->validate()) {
 					$model->save();
-					$this->redirect('index.php?r=customer/index');
+					$this->redirect('index.php?r=customer/view&id='.$id);
 				}
 			}
 			$this->render('update',array('model'=>$model));	

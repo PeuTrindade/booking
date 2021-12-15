@@ -38,12 +38,16 @@ class RoomController extends Controller
 
 	public function actionCreate() {
 		$model = new Room;
+		$model->scenario = 'create';
 			
 		if(isset($_POST['Room'])) {
 			$model->attributes = $_POST['Room'];
 			$fieldName = $_POST['Room']['name'];
-			
+			$fieldFile = CUploadedFile::getInstance($model, 'image');
+			$model->beforeUploadImage($fieldFile);
+
 			if($model->checkRoomName($fieldName) && $model->validate()) {
+				$model->uploadImage($fieldFile);
 				$model->save();
 				$this->redirect('index.php?r=room/index');
 			}
@@ -59,8 +63,11 @@ class RoomController extends Controller
 			if(isset($_POST['Room'])){
 				$model->attributes = $_POST['Room'];
 				$fieldName = $_POST['Room']['name'];
+				$fieldFile = CUploadedFile::getInstance($model, 'image');
+				$model->beforeUploadImage($fieldFile);
 
 				if($model->checkRoomName($fieldName,$id) && $model->validate()) {
+					$model->uploadImage($fieldFile);
 					$model->save();
 					$this->redirect('index.php?r=room/index');
 				}
