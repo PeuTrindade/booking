@@ -1,8 +1,17 @@
 
 
-$(document).ready(() => {
+// $(document).ready(() => {
+   
+$('#Reservation_endTime').change(() => {
+    let data = {
+        ajaxStartTime: $('#Reservation_startTime').val(),
+        ajaxEndTime: $('#Reservation_endTime').val(),
+    }
 
-
+    $.post('protected/controllers/ReservationController.php',data,function(result,status){
+        console.log(result)
+    });
+});
 
 // let startTimeValue = '';
 // let endTimeValue = '';
@@ -21,4 +30,4 @@ $(document).ready(() => {
 //     endTimeValue = formatValue(e.target.value);
 //     console.log(startTimeValue + endTimeValue);
 // });
-});
+// });

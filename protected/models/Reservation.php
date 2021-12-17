@@ -142,11 +142,11 @@ class Reservation extends CActiveRecord
 
 	public function checkStartTimeIsAllow($attribute,$params) {
 		$reservationAtThisDate = self::model()->findAll('bookingDate=:bookingDate',array(':bookingDate'=>$this->bookingDate));
-		$formatStartTime = str_replace(':','',$this->startTime).'00';
+		$formatStartTime = $this->returnFormatedTime($this->startTime,'His');
 		
 		foreach ($reservationAtThisDate as $key => $reservation) {
-			$reservationStartTime = str_replace(':','',$reservation['startTime']);
-			$reservationEndTime = str_replace(':','',$reservation['endTime']);
+			$reservationStartTime = $this->returnFormatedTime($reservation['startTime'],'His');
+			$reservationEndTime = $this->returnFormatedTime($reservation['endTime'],'His');
 
 			if($formatStartTime >= $reservationStartTime && $formatStartTime < $reservationEndTime)
 				$this->addError($attribute,'Horario ocupado!');
@@ -154,14 +154,19 @@ class Reservation extends CActiveRecord
 	}	
 
 	public function checkEndTimeIsAllow($attribute,$params) {
-		$formatStartTime = str_replace(':','',$this->startTime).'00';
-		$formatEndTime = str_replace(':','',$this->endTime).'00';
+		$formatStartTime = $this->returnFormatedTime($this->startTime,'His');
+		$formatEndTime = $this->returnFormatedTime($this->endTime,'His');
 		$countMinutes = $formatEndTime - $formatStartTime;
 
 		if($formatEndTime <= $formatStartTime)
 			$this->addError($attribute,'Horario de termino deve ser maior que o de inicio');
 		else if($countMinutes < 3000)
 			$this->addError($attribute,'Tempo minimo de reserva deve ser de 30 minutos');
+	}
+
+	public function returnFormatedTime($value,$timeFormat) {
+		$time = new DateTime($value);
+		return $time->format($timeFormat);
 	}
 
 	public function formatDate($dateFormat) {

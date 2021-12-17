@@ -1,6 +1,5 @@
 <?php
 /* @var $this ReservationController */
-
 ?>
 
 <style>
@@ -24,5 +23,5 @@
 			));
 		?>
 	</div>
-	<a class='reservationCreateButton' href='index.php?r=reservation/create'>Crie uma sala</a>
+	<a class='reservationCreateButton' href='index.php?r=reservation/create'>Crie uma reserva</a>
 </section>
