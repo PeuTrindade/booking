@@ -44,7 +44,7 @@ class CustomerController extends Controller
 			
 			if($model->validate()) {
 				$model->save();
-				$this->redirect('index.php?r=customer/index');
+				$this->redirect($this->createUrl('customer/index'));
 			}
     	}
 
@@ -67,7 +67,7 @@ class CustomerController extends Controller
 
 		if(isset($model) && isset($id)){
 			$model->delete();
-			$this->redirect('index.php?r=customer/index');
+			$this->redirect($this->createUrl('customer/index'));
 		} else {
 			throw new CHttpException(404,'Essa página requisitada não existe!');
 		}
@@ -82,7 +82,7 @@ class CustomerController extends Controller
 
 				if($model->validate()) {
 					$model->save();
-					$this->redirect('index.php?r=customer/view&id='.$id);
+					$this->redirect($this->createUrl('customer/view',array('id'=>$id)));
 				}
 			}
 			$this->render('update',array('model'=>$model));	

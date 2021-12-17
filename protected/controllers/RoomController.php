@@ -48,7 +48,7 @@ class RoomController extends Controller
 			if($model->validate()) {
 				$model->uploadImage($fieldFile);
 				$model->save();
-				$this->redirect('index.php?r=room/index');
+				$this->redirect($this->createUrl('room/index'));
 			}
     	}
 		
@@ -67,7 +67,7 @@ class RoomController extends Controller
 				if($model->validate()) {
 					$model->uploadImage($fieldFile);
 					$model->save();
-					$this->redirect('index.php?r=room/index');
+					$this->redirect($this->createUrl('room/view',array('id'=>$id)));
 				}
 			}
 			$this->render('update',array('model'=>$model));	
@@ -81,7 +81,7 @@ class RoomController extends Controller
 
 		if(isset($model) && isset($id)){
 			$model->delete();
-			$this->redirect('index.php?r=room/index');
+			$this->redirect($this->createUrl('room/index'));
 		} else {
 			throw new CHttpException(404,'Essa página requisitada não existe!');
 		}

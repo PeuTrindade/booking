@@ -44,7 +44,7 @@ class ReservationController extends Controller
 
 			if($model->addCustomerAndRoomId() && $model->validate()){
 				$model->save();
-				$this->redirect('index.php?r=reservation/index');
+				$this->redirect($this->createUrl('reservation/index'));
 			}
 		}
 		$this->render('create',array('model'=>$model));
@@ -56,6 +56,35 @@ class ReservationController extends Controller
 		if(isset($model) && isset($id)){
 			$model->formatDate('d/m/Y');
 			$this->render('view',array('model'=>$model));
+		} else {
+			throw new CHttpException(404,'Essa página requisitada não existe!');
+		}
+	}
+
+	public function actionUpdate($id) {
+		$model = $this->loadReservation($id);
+
+		if(isset($model) && isset($id)){
+			if(isset($_POST['Reservation'])){
+				$model->attributes = $_POST['Reservation'];
+
+				if($model->addCustomerAndRoomId() && $model->validate()) {
+					$model->save();
+					$this->redirect($this->createUrl('reservation/view',array('id'=>$id)));
+				}
+			}
+			$this->render('update',array('model'=>$model));	
+		} else {
+			throw new CHttpException(404,'Essa página requisitada não existe!');
+		}
+	}
+
+	public function actionDelete($id) {
+		$model = $this->loadReservation($id);
+
+		if(isset($model) && isset($id)){
+			$model->delete();
+			$this->redirect($this->createUrl('reservation/index'));
 		} else {
 			throw new CHttpException(404,'Essa página requisitada não existe!');
 		}

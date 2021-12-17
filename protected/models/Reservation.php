@@ -148,8 +148,10 @@ class Reservation extends CActiveRecord
 			$reservationStartTime = $this->returnFormatedTime($reservation['startTime'],'His');
 			$reservationEndTime = $this->returnFormatedTime($reservation['endTime'],'His');
 
-			if($formatStartTime >= $reservationStartTime && $formatStartTime < $reservationEndTime)
-				$this->addError($attribute,'Horario ocupado!');
+			if($reservation['roomId'] === $this->roomId && $reservation['id'] !== $this->id) {
+				if($formatStartTime >= $reservationStartTime && $formatStartTime < $reservationEndTime)
+					$this->addError($attribute,'Horario ocupado!');
+			}
 		}
 	}	
 
