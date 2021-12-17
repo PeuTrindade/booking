@@ -32,7 +32,7 @@ class RoomController extends Controller
 			),
 			'criteria'=>$criteria,
 		));
-
+			
 		$this->render('index',array('dataProvider'=>$dataProvider));
 	}
 
@@ -42,11 +42,10 @@ class RoomController extends Controller
 			
 		if(isset($_POST['Room'])) {
 			$model->attributes = $_POST['Room'];
-			$fieldName = $_POST['Room']['name'];
 			$fieldFile = CUploadedFile::getInstance($model, 'image');
 			$model->beforeUploadImage($fieldFile);
 
-			if($model->checkRoomName($fieldName) && $model->validate()) {
+			if($model->validate()) {
 				$model->uploadImage($fieldFile);
 				$model->save();
 				$this->redirect('index.php?r=room/index');
@@ -57,16 +56,15 @@ class RoomController extends Controller
 	}
 
 	public function actionUpdate($id){
-		$model = $this->loadRoom();
+		$model = $this->loadRoom($id);
 
 		if(isset($model) && isset($id)){
 			if(isset($_POST['Room'])){
 				$model->attributes = $_POST['Room'];
-				$fieldName = $_POST['Room']['name'];
 				$fieldFile = CUploadedFile::getInstance($model, 'image');
 				$model->beforeUploadImage($fieldFile);
 
-				if($model->checkRoomName($fieldName,$id) && $model->validate()) {
+				if($model->validate()) {
 					$model->uploadImage($fieldFile);
 					$model->save();
 					$this->redirect('index.php?r=room/index');
@@ -79,7 +77,7 @@ class RoomController extends Controller
 	}
 
 	public function actionDelete($id) {
-		$model = $this->loadRoom();
+		$model = $this->loadRoom($id);
 
 		if(isset($model) && isset($id)){
 			$model->delete();
@@ -90,7 +88,7 @@ class RoomController extends Controller
 	}
 
 	public function actionView($id) {
-		$model = $this->loadRoom();
+		$model = $this->loadRoom($id);
 
 		if(isset($model) && isset($id)){
 			$this->render('view',array('model'=>$model));
@@ -98,16 +96,10 @@ class RoomController extends Controller
 			throw new CHttpException(404,'Essa página requisitada não existe!');
 		}
 	}
-
-	public function loadRoom() {
-		$roomId = $_GET['id'];
-
-		if(isset($roomId)){
-			$model = Room::model()->findByPk($roomId);
-			return $model;
-		} else {
-			throw new CHttpException(404,'Essa página requisitada não existe!');
-		}
+	
+	private function loadRoom($roomId) {
+		$model = Room::model()->findByPk($roomId);
+		return $model;
 	}
 
 	// Uncomment the following methods and override them if needed

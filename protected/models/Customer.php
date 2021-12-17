@@ -35,7 +35,8 @@ class Customer extends CActiveRecord
 			array('name,email,personCode,phoneNumber,birthday','required'),
 			array('personCode, phoneNumber', 'numerical', 'integerOnly'=>true),
 			array('name, email', 'length', 'max'=>255),
-			array('birthday', 'safe'),
+			array('email','checkCustomerEmail'),
+			array('birthday', 'safe'), 
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, name, personCode, email, phoneNumber, birthday', 'safe', 'on'=>'search'),
@@ -110,17 +111,11 @@ class Customer extends CActiveRecord
 		return parent::model($className);
 	}
 
-	public function checkCustomerEmail($fieldEmail,$id=null){
-		if(isset($fieldEmail)){
-			$searchExpression = Customer::model()->find('email=:customerEmail',array(':customerEmail'=>$fieldEmail));
+	public function checkCustomerEmail($attribute,$param){
+		$searchExpression = Customer::model()->find('email=:customerEmail',array(':customerEmail'=>$this->email));
 			
-			if(isset($searchExpression) && $searchExpression->id !== $id){
-				$this->addError('email','Esse email já foi cadastrado!');
-				return false;
-			} else {
-				return true;
-			}
-		}
+		if(isset($searchExpression) && $searchExpression->id !== $this->id)
+			$this->addError($attribute,'Esse email já foi cadastrado!');
 	}
 
 	public function formatDate($dateFormat) {

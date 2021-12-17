@@ -10,7 +10,7 @@
 <section class='roomPageContainer'>
 	<h1>Salas</h1>
 	<p>Gerencie as salas do sistema</p>
-	<div class='rooms'>
+	<div id='rooms' class='rooms'>
 		<?php
 			$this->widget('zii.widgets.CListView', array(
 				'dataProvider'=>$dataProvider,

@@ -41,9 +41,8 @@ class CustomerController extends Controller
 			
 		if(isset($_POST['Customer'])) {
 			$model->attributes = $_POST['Customer'];
-			$fieldEmail = $_POST['Customer']['email'];
 			
-			if($model->checkCustomerEmail($fieldEmail) && $model->validate()) {
+			if($model->validate()) {
 				$model->save();
 				$this->redirect('index.php?r=customer/index');
 			}
@@ -53,7 +52,7 @@ class CustomerController extends Controller
 	}
 
 	public function actionView($id) {
-		$model = $this->loadCustomer();
+		$model = $this->loadCustomer($id);
 
 		if(isset($model) && isset($id)){
 			$model->formatDate('d/m/Y');
@@ -64,7 +63,7 @@ class CustomerController extends Controller
 	}
 
 	public function actionDelete($id) {
-		$model = $this->loadCustomer();
+		$model = $this->loadCustomer($id);
 
 		if(isset($model) && isset($id)){
 			$model->delete();
@@ -75,14 +74,13 @@ class CustomerController extends Controller
 	}
 
 	public function actionUpdate($id) {
-		$model = $this->loadCustomer();
+		$model = $this->loadCustomer($id);
 
 		if(isset($model) && isset($id)){
 			if(isset($_POST['Customer'])){
 				$model->attributes = $_POST['Customer'];
-				$fieldEmail = $_POST['Customer']['email'];
 
-				if($model->checkCustomerEmail($fieldEmail,$id) && $model->validate()) {
+				if($model->validate()) {
 					$model->save();
 					$this->redirect('index.php?r=customer/view&id='.$id);
 				}
@@ -93,15 +91,9 @@ class CustomerController extends Controller
 		}
 	}
 
-	public function loadCustomer() {
-		$customerId = $_GET['id'];
-
-		if(isset($customerId)){
-			$model = Customer::model()->findByPk($customerId);
-			return $model;
-		} else {
-			throw new CHttpException(404,'Essa página requisitada não existe!');
-		}
+	private function loadCustomer($customerId) {
+		$model = Customer::model()->findByPk($customerId);
+		return $model;
 	}
 
 	// Uncomment the following methods and override them if needed

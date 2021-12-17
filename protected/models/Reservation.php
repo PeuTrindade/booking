@@ -20,6 +20,8 @@
  */
 class Reservation extends CActiveRecord
 {
+	private $errors = array();
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -39,6 +41,8 @@ class Reservation extends CActiveRecord
 			array('customerName,roomName,bookingDate,startTime,endTime,totalAmount', 'required'),
 			array('totalAmount', 'numerical'),
 			array('bookingDate, startTime, endTime, guestsEmails', 'safe'),
+			array('startTime','checkStartTimeIsAllow'),
+			array('endTime','checkEndTimeIsAllow'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, customerId, roomId, bookingDate, startTime, endTime, totalAmount, guestsEmails', 'safe', 'on'=>'search'),
@@ -120,11 +124,8 @@ class Reservation extends CActiveRecord
 	}
 
 	public function addCustomerAndRoomId() {
-		$customerName = $this->customerName;
-		$roomName = $this->roomName;
-
-		$customer = Customer::model()->find('name=:customerName',array(':customerName'=>$customerName));
-		$room = Room::model()->find('name=:roomName',array(':roomName'=>$roomName));
+		$customer = Customer::model()->find('name=:customerName',array(':customerName'=>$this->customerName));
+		$room = Room::model()->find('name=:roomName',array(':roomName'=>$this->roomName));
 
 		if(!isset($customer)) {
 			$this->addError('customerName','Cliente não encontrado!');
@@ -135,25 +136,36 @@ class Reservation extends CActiveRecord
 		else {
 			$this->customerId = $customer->id;
 			$this->roomId = $room->id;
+			return true;
 		}	
-	}
+	} 
 
-	public function timeValidations() {
-		$this->checkTimeIsAllow();
-	}
-
-	private function checkTimeIsAllow() {
-		$reservationDate = $this->bookingDate;
-		$startTime = $this->startTime;
-		$endTime = $this->endTime;
-
-		$reservationAtThisDate = self::model()->findAll('bookingDate=:bookingDate',array(':bookingDate'=>$reservationDate));
-		// $isStartTimeAllow = self::model()->find('startTime=:startTime',array(':startTime'=>$startTime));
-		// $isEndTimeAllow = self::model()->find('endTime=:endTime',array(':endTime'=>$endTime));
-		$reservationsTimes = array();
+	public function checkStartTimeIsAllow($attribute,$params) {
+		$reservationAtThisDate = self::model()->findAll('bookingDate=:bookingDate',array(':bookingDate'=>$this->bookingDate));
+		$formatStartTime = str_replace(':','',$this->startTime).'00';
+		
 		foreach ($reservationAtThisDate as $key => $reservation) {
 			$reservationStartTime = str_replace(':','',$reservation['startTime']);
-			var_dump($reservationStartTime);
-		}	
+			$reservationEndTime = str_replace(':','',$reservation['endTime']);
+
+			if($formatStartTime >= $reservationStartTime && $formatStartTime < $reservationEndTime)
+				$this->addError($attribute,'Horario ocupado!');
+		}
+	}	
+
+	public function checkEndTimeIsAllow($attribute,$params) {
+		$formatStartTime = str_replace(':','',$this->startTime).'00';
+		$formatEndTime = str_replace(':','',$this->endTime).'00';
+		$countMinutes = $formatEndTime - $formatStartTime;
+
+		if($formatEndTime <= $formatStartTime)
+			$this->addError($attribute,'Horario de termino deve ser maior que o de inicio');
+		else if($countMinutes < 3000)
+			$this->addError($attribute,'Tempo minimo de reserva deve ser de 30 minutos');
+	}
+
+	public function formatDate($dateFormat) {
+		$date = new DateTime($this->bookingDate);
+		$this->bookingDate = $date->format($dateFormat);
 	}
 }

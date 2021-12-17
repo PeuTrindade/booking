@@ -42,13 +42,30 @@ class ReservationController extends Controller
 		if(isset($_POST['Reservation'])){
 			$model->attributes = $_POST['Reservation'];
 
-			if($model->timeValidations() && $model->validate()){
-				$model->addCustomerAndRoomId();
+			if($model->addCustomerAndRoomId() && $model->validate()){
+				$model->save();
+				$this->redirect('index.php?r=reservation/index');
 			}
 		}
 		$this->render('create',array('model'=>$model));
 	}
 
+	public function actionView($id) {
+		$model = $this->loadReservation($id);
+
+		if(isset($model) && isset($id)){
+			$model->formatDate('d/m/Y');
+			$this->render('view',array('model'=>$model));
+		} else {
+			throw new CHttpException(404,'Essa página requisitada não existe!');
+		}
+	}
+
+	private function loadReservation($reservationId) {
+		$model = Reservation::model()->findByPk($reservationId);
+		return $model;
+	}
+	
 	// Uncomment the following methods and override them if needed
 	/*
 	public function filters()

@@ -34,6 +34,7 @@ class Room extends CActiveRecord
 			array('name,description,valuePerHour','required'),
 			array('valuePerHour', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>55),
+			array('name','checkRoomName'),
 			array('image', 'required','on'=>'create'),
 			array('image','file','types'=>'jpg, gif, png', 'allowEmpty'=>false,'on'=>'create'),
 			array('description', 'safe'),
@@ -116,17 +117,11 @@ class Room extends CActiveRecord
 		return parent::model($className);
 	}
 
-	public function checkRoomName($fieldName,$id=null){
-		if(isset($fieldName)){
-			$searchExpression = self::model()->find('name=:roomName',array(':roomName'=>$fieldName));
+	public function checkRoomName($attribute,$params){
+		$searchExpression = self::model()->find('name=:roomName',array(':roomName'=>$this->name));
 			
-			if(isset($searchExpression) && $searchExpression->id !== $id){
-				$this->addError('name','Esse nome já existe!');
-				return false;
-			} else {
-				return true;
-			}
-		}
+		if(isset($searchExpression) && $searchExpression->id !== $this->id)
+			$this->addError($attribute,'Esse nome já existe!');
 	}
 
 	public function beforeUploadImage($fieldFile) {
