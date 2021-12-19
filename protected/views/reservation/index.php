@@ -23,5 +23,5 @@
 			));
 		?>
 	</div>
-	<a class='reservationCreateButton' href='index.php?r=reservation/create'>Crie uma reserva</a>
+	<a class='reservationCreateButton' href='<?php echo $this->createUrl('reservation/create'); ?>'>Crie uma reserva</a>
 </section>

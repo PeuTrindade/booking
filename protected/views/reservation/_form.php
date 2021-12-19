@@ -19,13 +19,13 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Nome do cliente'); ?>
-		<?php echo $form->textField($model,'customerName'); ?>
+		<?php echo $form->dropDownList($model,'customerName',$customersNames); ?>
 		<?php echo $form->error($model,'customerName'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Nome da sala'); ?>
-		<?php echo $form->textField($model,'roomName'); ?>
+		<?php echo $form->dropDownList($model,'roomName',$roomsNames); ?>
 		<?php echo $form->error($model,'roomName'); ?>
 	</div>
 

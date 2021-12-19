@@ -21,8 +21,8 @@ $birthday = $model->birthday;
         <h3>Nascimento do cliente: <?php echo $birthday; ?></h3>
     </div>
     <div class='viewCustomerControls'>
-        <a href='index.php?r=customer/update&id=<?php echo $id;?>'>Atualizar cliente</a>
-        <a href='index.php?r=customer/delete&id=<?php echo $id;?>'>Deletar cliente</a>
+        <a href='<?php echo $this->createUrl('customer/update',array('id'=>$id)); ?>'>Atualizar cliente</a>
+        <a href='<?php echo $this->createUrl('customer/delete',array('id'=>$id)); ?>'>Deletar cliente</a>
     </div>
 </section>
 

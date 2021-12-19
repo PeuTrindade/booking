@@ -22,6 +22,6 @@
 			)
 		));
 	?>
-	<a class='customerCreateButton' href='index.php?r=customer/create'>Crie um cliente</a>
+	<a class='customerCreateButton' href='<?php echo $this->createUrl('customer/create'); ?>'>Crie um cliente</a>
 </section>
 

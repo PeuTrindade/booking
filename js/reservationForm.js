@@ -1,5 +1,4 @@
 
-
 // $(document).ready(() => {
    
 $('#Reservation_endTime').change(() => {
@@ -8,7 +7,7 @@ $('#Reservation_endTime').change(() => {
         ajaxEndTime: $('#Reservation_endTime').val(),
     }
 
-    $.post('protected/controllers/ReservationController.php',data,function(result,status){
+    $.post('http://localhost/booking/index.php/reservation',data,function(result,status){
         console.log(result)
     });
 });

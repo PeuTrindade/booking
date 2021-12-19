@@ -38,6 +38,8 @@ class ReservationController extends Controller
 
 	public function actionCreate() {
 		$model = new Reservation;
+		$customersNames = $this->returnArrayOfNames('Customer');
+		$roomsNames = $this->returnArrayOfNames('Room');
 
 		if(isset($_POST['Reservation'])){
 			$model->attributes = $_POST['Reservation'];
@@ -47,7 +49,7 @@ class ReservationController extends Controller
 				$this->redirect($this->createUrl('reservation/index'));
 			}
 		}
-		$this->render('create',array('model'=>$model));
+		$this->render('create',array('model'=>$model,'customersNames'=>$customersNames,'roomsNames'=>$roomsNames));
 	}
 
 	public function actionView($id) {
@@ -63,6 +65,8 @@ class ReservationController extends Controller
 
 	public function actionUpdate($id) {
 		$model = $this->loadReservation($id);
+		$customersNames = $this->returnArrayOfNames('Customer');
+		$roomsNames = $this->returnArrayOfNames('Room');
 
 		if(isset($model) && isset($id)){
 			if(isset($_POST['Reservation'])){
@@ -73,7 +77,7 @@ class ReservationController extends Controller
 					$this->redirect($this->createUrl('reservation/view',array('id'=>$id)));
 				}
 			}
-			$this->render('update',array('model'=>$model));	
+			$this->render('update',array('model'=>$model,'customersNames'=>$customersNames,'roomsNames'=>$roomsNames));	
 		} else {
 			throw new CHttpException(404,'Essa página requisitada não existe!');
 		}
@@ -93,6 +97,18 @@ class ReservationController extends Controller
 	private function loadReservation($reservationId) {
 		$model = Reservation::model()->findByPk($reservationId);
 		return $model;
+	}
+
+	private function returnArrayOfNames($model) {
+		$namesArray = array();
+		$items = $model::model()->findAll();
+
+		foreach ($items as $key => $value) {
+			$itemName = $value['name'];
+			array_push($namesArray,array($itemName=>$itemName));
+		}
+
+		return $namesArray;
 	}
 	
 	// Uncomment the following methods and override them if needed

@@ -6,7 +6,8 @@
     color: #00968c;
 }
 
-#form input {
+#form input,
+#form select {
     width: 15rem;
     border: none;
     outline: none;

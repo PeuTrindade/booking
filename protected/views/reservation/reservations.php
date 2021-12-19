@@ -12,4 +12,4 @@ if(strlen($customerName) > 20){
     <?php include 'css/reservation/reservations.css'; ?>
 </style>
 
-<a class='reservation' href='index.php?r=reservation/view&id=<?php echo $id; ?>'>ID da reserva: <?php echo $id; ?> | Cliente: <?php echo $customerName;  ?> | Sala: <?php echo $roomName; ?></a>
+<a class='reservation' href='<?php echo $this->createUrl('reservation/view',array('id'=>$id)); ?>'>ID da reserva: <?php echo $id; ?> | Cliente: <?php echo $customerName;  ?> | Sala: <?php echo $roomName; ?></a>

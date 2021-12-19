@@ -27,7 +27,7 @@ $guestsEmails = $model->guestsEmails;
         <h3>Emails dos visitantes: <?php echo $guestsEmails; ?></h3>
     </div>
     <div class='viewReservationControls'>
-        <a href='index.php?r=reservation/update&id=<?php echo $id;?>'>Atualizar reserva</a>
-        <a href='index.php?r=reservation/delete&id=<?php echo $id;?>'>Deletar reserva</a>
+        <a href='<?php echo $this->createUrl('reservation/update',array('id'=>$id)); ?>'>Atualizar reserva</a>
+        <a href='<?php echo $this->createUrl('reservation/delete',array('id'=>$id)); ?>'>Deletar reserva</a>
     </div>
 </section>

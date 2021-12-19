@@ -24,5 +24,5 @@
 			));
 		?>
 	</div>
-	<a class='roomCreateButton' href='index.php?r=room/create'>Crie uma sala</a>
+	<a class='roomCreateButton' href='<?php echo $this->createUrl('room/create'); ?>'>Crie uma sala</a>
 </section>
