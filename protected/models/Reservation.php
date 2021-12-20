@@ -175,4 +175,50 @@ class Reservation extends CActiveRecord
 		$date = new DateTime($this->bookingDate);
 		$this->bookingDate = $date->format($dateFormat);
 	}
+
+	public function sendEmail() {
+		$guestsEmailsArray = explode(',',$this->guestsEmails);
+		$newMail = new PHPMailer;
+		$this->formatDate('d/m/Y');
+
+		$this->emailConfigurations($newMail);
+		$this->emailContentConfigurations($newMail,$guestsEmailsArray);
+	}
+
+	private function emailConfigurations($newMail) {
+		$newMail->isSMTP();
+
+		$newMail->Host = 'smtp.gmail.com';
+		$newMail->Port = '587';
+		$newMail->SMTPSecure = 'tls';
+		$newMail->SMTPAuth = 'true';
+		$newMail->Username = 'devpedrotrindade@gmail.com';
+		$newMail->Password = 'pedro2804';
+	}
+
+	private function emailContentConfigurations($newMail,$guestsEmailsArray) {
+		$newMail->Subject = 'Agendamento marcado para o dia '.$this->bookingDate;
+		$emailContent = 'Olá, estamos felizes em saber que você irá visitar nosso espaço no dia '.$this->bookingDate.'. Abaixo segue o seu QRcode, ele será usado como verificação, portanto, não perca esse email!';
+
+		foreach ($guestsEmailsArray as $key => $guest) {
+			$qrcode = new Code;
+			$qrcode->uploadQRCode($guest.','.$this->bookingDate.','.$this->startTime,$guest);
+			$this->saveQRcode($qrcode,$guest);
+			$newMail->setFrom($newMail->Username,'Booking - Agendamento de salas');
+			$newMail->addAddress($guest);
+			$newMail->addAttachment('qrcodes/qrcode_'.$guest.'.png');
+			$newMail->IsHTML(true);
+			$newMail->Body = $emailContent;
+		}
+
+		$newMail->send();
+	}
+
+	private function saveQRcode($qrcode,$guest) {
+		$qrcode->guestEmail = $guest;
+		$qrcode->reservationId = $this->id;
+		$qrcode->situation = 'valid';
+
+		$qrcode->save();
+	}
 }

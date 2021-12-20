@@ -4304,3 +4304,251 @@ Stack trace:
 REQUEST_URI=/booking/index.php?r=reservation/create
 HTTP_REFERER=http://localhost/booking/index.php?r=reservation/create
 ---
+2021/12/20 11:49:12 [error] [exception.ParseError] ParseError: syntax error, unexpected '}', expecting ',' or ';' in C:\wamp\www\Booking\protected\controllers\ReservationController.php:117
+Stack trace:
+#0 C:\Users\pedri\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('create/')
+#1 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('reservation/cre...')
+#2 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#3 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/booking/index.php?r=reservation/create
+HTTP_REFERER=http://localhost/booking/index.php?r=reservation/create
+---
+2021/12/20 11:51:44 [error] [php] require(../components/phpmailer/PHPMailerAutoload.php): failed to open stream: No such file or directory (C:\wamp\www\Booking\protected\controllers\ReservationController.php:3)
+Stack trace:
+#0 C:\wamp\www\Booking\protected\controllers\ReservationController.php(3): require()
+#1 C:\Users\pedri\yii\framework\web\CWebApplication.php(354): require()
+#2 C:\Users\pedri\yii\framework\web\CWebApplication.php(276): CWebApplication->createController()
+#3 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\wamp\www\Booking\index.php(13): CWebApplication->run()
+REQUEST_URI=/booking/index.php?r=reservation/create
+in C:\wamp\www\Booking\protected\controllers\ReservationController.php (3)
+in C:\wamp\www\Booking\protected\controllers\ReservationController.php (3)
+in C:\wamp\www\Booking\index.php (13)
+2021/12/20 11:52:48 [error] [php] require(./components/phpmailer/PHPMailerAutoload.php): failed to open stream: No such file or directory (C:\wamp\www\Booking\protected\controllers\ReservationController.php:3)
+Stack trace:
+#0 C:\wamp\www\Booking\protected\controllers\ReservationController.php(3): require()
+#1 C:\Users\pedri\yii\framework\web\CWebApplication.php(354): require()
+#2 C:\Users\pedri\yii\framework\web\CWebApplication.php(276): CWebApplication->createController()
+#3 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\wamp\www\Booking\index.php(13): CWebApplication->run()
+REQUEST_URI=/booking/index.php?r=reservation/create
+in C:\wamp\www\Booking\protected\controllers\ReservationController.php (3)
+in C:\wamp\www\Booking\protected\controllers\ReservationController.php (3)
+in C:\wamp\www\Booking\index.php (13)
+2021/12/20 11:52:54 [error] [php] require(components/phpmailer/PHPMailerAutoload.php): failed to open stream: No such file or directory (C:\wamp\www\Booking\protected\controllers\ReservationController.php:3)
+Stack trace:
+#0 C:\wamp\www\Booking\protected\controllers\ReservationController.php(3): require()
+#1 C:\Users\pedri\yii\framework\web\CWebApplication.php(354): require()
+#2 C:\Users\pedri\yii\framework\web\CWebApplication.php(276): CWebApplication->createController()
+#3 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\wamp\www\Booking\index.php(13): CWebApplication->run()
+REQUEST_URI=/booking/index.php?r=reservation/create
+in C:\wamp\www\Booking\protected\controllers\ReservationController.php (3)
+in C:\wamp\www\Booking\protected\controllers\ReservationController.php (3)
+in C:\wamp\www\Booking\index.php (13)
+2021/12/20 11:53:00 [error] [php] require(../../components/phpmailer/PHPMailerAutoload.php): failed to open stream: No such file or directory (C:\wamp\www\Booking\protected\controllers\ReservationController.php:3)
+Stack trace:
+#0 C:\wamp\www\Booking\protected\controllers\ReservationController.php(3): require()
+#1 C:\Users\pedri\yii\framework\web\CWebApplication.php(354): require()
+#2 C:\Users\pedri\yii\framework\web\CWebApplication.php(276): CWebApplication->createController()
+#3 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\wamp\www\Booking\index.php(13): CWebApplication->run()
+REQUEST_URI=/booking/index.php?r=reservation/create
+in C:\wamp\www\Booking\protected\controllers\ReservationController.php (3)
+in C:\wamp\www\Booking\protected\controllers\ReservationController.php (3)
+in C:\wamp\www\Booking\index.php (13)
+2021/12/20 11:53:05 [error] [php] require(../components/phpmailer/PHPMailerAutoload.php): failed to open stream: No such file or directory (C:\wamp\www\Booking\protected\controllers\ReservationController.php:3)
+Stack trace:
+#0 C:\wamp\www\Booking\protected\controllers\ReservationController.php(3): require()
+#1 C:\Users\pedri\yii\framework\web\CWebApplication.php(354): require()
+#2 C:\Users\pedri\yii\framework\web\CWebApplication.php(276): CWebApplication->createController()
+#3 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\wamp\www\Booking\index.php(13): CWebApplication->run()
+REQUEST_URI=/booking/index.php?r=reservation/create
+in C:\wamp\www\Booking\protected\controllers\ReservationController.php (3)
+in C:\wamp\www\Booking\protected\controllers\ReservationController.php (3)
+in C:\wamp\www\Booking\index.php (13)
+2021/12/20 11:54:15 [error] [php] require(phpmailer/PHPMailerAutoload.php): failed to open stream: No such file or directory (C:\wamp\www\Booking\protected\controllers\ReservationController.php:3)
+Stack trace:
+#0 C:\wamp\www\Booking\protected\controllers\ReservationController.php(3): require()
+#1 C:\Users\pedri\yii\framework\web\CWebApplication.php(354): require()
+#2 C:\Users\pedri\yii\framework\web\CWebApplication.php(276): CWebApplication->createController()
+#3 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\wamp\www\Booking\index.php(13): CWebApplication->run()
+REQUEST_URI=/booking/index.php?r=reservation/create
+in C:\wamp\www\Booking\protected\controllers\ReservationController.php (3)
+in C:\wamp\www\Booking\protected\controllers\ReservationController.php (3)
+in C:\wamp\www\Booking\index.php (13)
+2021/12/20 11:56:14 [error] [php] require(phpmailer/src/PHPMailerAutoload.php): failed to open stream: No such file or directory (C:\wamp\www\Booking\protected\controllers\ReservationController.php:3)
+Stack trace:
+#0 C:\wamp\www\Booking\protected\controllers\ReservationController.php(3): require()
+#1 C:\Users\pedri\yii\framework\web\CWebApplication.php(354): require()
+#2 C:\Users\pedri\yii\framework\web\CWebApplication.php(276): CWebApplication->createController()
+#3 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\wamp\www\Booking\index.php(13): CWebApplication->run()
+REQUEST_URI=/booking/index.php?r=reservation/create
+in C:\wamp\www\Booking\protected\controllers\ReservationController.php (3)
+in C:\wamp\www\Booking\protected\controllers\ReservationController.php (3)
+in C:\wamp\www\Booking\index.php (13)
+2021/12/20 11:58:05 [error] [php] include(PHPMailer.php): failed to open stream: No such file or directory (C:\Users\pedri\yii\framework\YiiBase.php:463)
+Stack trace:
+#0 C:\Users\pedri\yii\framework\YiiBase.php(463): include()
+#1 unknown(0): autoload()
+#2 C:\wamp\www\Booking\protected\controllers\ReservationController.php(117): spl_autoload_call()
+#3 C:\wamp\www\Booking\protected\controllers\ReservationController.php(48): ReservationController->sendEmail()
+#4 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(49): ReservationController->actionCreate()
+#5 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): ReservationController->runAction()
+#7 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\Users\pedri\yii\framework\web\CController.php(1148): CAccessControlFilter->filter()
+#9 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): ReservationController->filterAccessControl()
+#10 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#11 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\Users\pedri\yii\framework\web\CController.php(265): ReservationController->runActionWithFilters()
+#13 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): ReservationController->run()
+#14 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#15 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#16 C:\wamp\www\Booking\index.php(13): CWebApplication->run()
+REQUEST_URI=/booking/index.php?r=reservation/create
+in C:\wamp\www\Booking\protected\controllers\ReservationController.php (117)
+in C:\wamp\www\Booking\protected\controllers\ReservationController.php (48)
+in C:\wamp\www\Booking\index.php (13)
+2021/12/20 11:58:16 [error] [php] include(PHPMailer.php): failed to open stream: No such file or directory (C:\Users\pedri\yii\framework\YiiBase.php:463)
+Stack trace:
+#0 C:\Users\pedri\yii\framework\YiiBase.php(463): include()
+#1 unknown(0): autoload()
+#2 C:\wamp\www\Booking\protected\controllers\ReservationController.php(117): spl_autoload_call()
+#3 C:\wamp\www\Booking\protected\controllers\ReservationController.php(48): ReservationController->sendEmail()
+#4 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(49): ReservationController->actionCreate()
+#5 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): ReservationController->runAction()
+#7 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\Users\pedri\yii\framework\web\CController.php(1148): CAccessControlFilter->filter()
+#9 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): ReservationController->filterAccessControl()
+#10 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#11 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\Users\pedri\yii\framework\web\CController.php(265): ReservationController->runActionWithFilters()
+#13 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): ReservationController->run()
+#14 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#15 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#16 C:\wamp\www\Booking\index.php(13): CWebApplication->run()
+REQUEST_URI=/booking/index.php?r=reservation/create
+in C:\wamp\www\Booking\protected\controllers\ReservationController.php (117)
+in C:\wamp\www\Booking\protected\controllers\ReservationController.php (48)
+in C:\wamp\www\Booking\index.php (13)
+2021/12/20 11:58:21 [error] [php] include(PHPMailer.php): failed to open stream: No such file or directory (C:\Users\pedri\yii\framework\YiiBase.php:463)
+Stack trace:
+#0 C:\Users\pedri\yii\framework\YiiBase.php(463): include()
+#1 unknown(0): autoload()
+#2 C:\wamp\www\Booking\protected\controllers\ReservationController.php(117): spl_autoload_call()
+#3 C:\wamp\www\Booking\protected\controllers\ReservationController.php(48): ReservationController->sendEmail()
+#4 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(49): ReservationController->actionCreate()
+#5 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): ReservationController->runAction()
+#7 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\Users\pedri\yii\framework\web\CController.php(1148): CAccessControlFilter->filter()
+#9 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): ReservationController->filterAccessControl()
+#10 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#11 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\Users\pedri\yii\framework\web\CController.php(265): ReservationController->runActionWithFilters()
+#13 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): ReservationController->run()
+#14 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#15 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#16 C:\wamp\www\Booking\index.php(13): CWebApplication->run()
+REQUEST_URI=/booking/index.php?r=reservation/create
+in C:\wamp\www\Booking\protected\controllers\ReservationController.php (117)
+in C:\wamp\www\Booking\protected\controllers\ReservationController.php (48)
+in C:\wamp\www\Booking\index.php (13)
+2021/12/20 12:48:08 [error] [exception.ParseError] ParseError: syntax error, unexpected '}', expecting ',' or ';' in C:\wamp\www\Booking\protected\controllers\ReservationController.php:149
+Stack trace:
+#0 C:\Users\pedri\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('create/')
+#1 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('reservation/cre...')
+#2 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#3 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/booking/index.php?r=reservation/create
+HTTP_REFERER=http://localhost/booking/index.php?r=reservation/create
+---
+2021/12/20 14:01:48 [error] [php] include(PHPMailer.php): failed to open stream: No such file or directory (C:\Users\pedri\yii\framework\YiiBase.php:463)
+Stack trace:
+#0 C:\Users\pedri\yii\framework\YiiBase.php(463): include()
+#1 unknown(0): autoload()
+#2 C:\wamp\www\Booking\protected\models\Reservation.php(181): spl_autoload_call()
+#3 C:\wamp\www\Booking\protected\controllers\ReservationController.php(51): Reservation->sendEmail()
+#4 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(49): ReservationController->actionCreate()
+#5 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): ReservationController->runAction()
+#7 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\Users\pedri\yii\framework\web\CController.php(1148): CAccessControlFilter->filter()
+#9 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): ReservationController->filterAccessControl()
+#10 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#11 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\Users\pedri\yii\framework\web\CController.php(265): ReservationController->runActionWithFilters()
+#13 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): ReservationController->run()
+#14 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#15 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#16 C:\wamp\www\Booking\index.php(13): CWebApplication->run()
+REQUEST_URI=/booking/index.php?r=reservation/create
+in C:\wamp\www\Booking\protected\models\Reservation.php (181)
+in C:\wamp\www\Booking\protected\controllers\ReservationController.php (51)
+in C:\wamp\www\Booking\index.php (13)
+2021/12/20 14:36:20 [error] [exception.CException] CException: Property "Code.guestEmail" is not defined. in C:\Users\pedri\yii\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\Users\pedri\yii\framework\db\ar\CActiveRecord.php(162): CComponent->__set('guestEmail', 'pedrinhotrindad...')
+#1 C:\wamp\www\Booking\protected\models\Reservation.php(218): CActiveRecord->__set('guestEmail', 'pedrinhotrindad...')
+#2 C:\wamp\www\Booking\protected\models\Reservation.php(206): Reservation->saveQRcode(Object(Code), 'pedrinhotrindad...')
+#3 C:\wamp\www\Booking\protected\models\Reservation.php(185): Reservation->emailContentConfigurations(Object(PHPMailer), Array)
+#4 C:\wamp\www\Booking\protected\controllers\ReservationController.php(51): Reservation->sendEmail()
+#5 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(49): ReservationController->actionCreate()
+#6 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#8 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#10 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#11 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#15 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('reservation/cre...')
+#16 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/booking/index.php?r=reservation/create
+HTTP_REFERER=http://localhost/booking/index.php?r=reservation/create
+---
+2021/12/20 14:37:03 [error] [exception.CException] CException: Property "Code.guestEmaIl" is not defined. in C:\Users\pedri\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\Users\pedri\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('guestEmaIl')
+#1 C:\Users\pedri\yii\framework\validators\CStringValidator.php(79): CActiveRecord->__get('guestEmaIl')
+#2 C:\Users\pedri\yii\framework\validators\CValidator.php(201): CStringValidator->validateAttribute(Object(Code), 'guestEmaIl')
+#3 C:\Users\pedri\yii\framework\base\CModel.php(159): CValidator->validate(Object(Code), Array)
+#4 C:\Users\pedri\yii\framework\db\ar\CActiveRecord.php(810): CModel->validate(NULL)
+#5 C:\wamp\www\Booking\protected\models\Reservation.php(222): CActiveRecord->save()
+#6 C:\wamp\www\Booking\protected\models\Reservation.php(206): Reservation->saveQRcode(Object(Code), 'pedrinhotrindad...')
+#7 C:\wamp\www\Booking\protected\models\Reservation.php(185): Reservation->emailContentConfigurations(Object(PHPMailer), Array)
+#8 C:\wamp\www\Booking\protected\controllers\ReservationController.php(51): Reservation->sendEmail()
+#9 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(49): ReservationController->actionCreate()
+#10 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#12 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#14 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#16 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#17 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#19 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('reservation/cre...')
+#20 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#21 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/booking/index.php?r=reservation/create
+HTTP_REFERER=http://localhost/booking/index.php?r=reservation/create
+---
