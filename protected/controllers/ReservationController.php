@@ -1,7 +1,5 @@
 <?php
 
-require 'libs/phpmailer/PHPMailerAutoload.php';
-
 class ReservationController extends Controller
 {
 	public function filters() {
@@ -47,9 +45,9 @@ class ReservationController extends Controller
 			$model->attributes = $_POST['Reservation'];
 		
 			if($model->addCustomerAndRoomId() && $model->validate()){
-				//$model->save();
-				$model->sendEmail();
-				//$this->redirect($this->createUrl('reservation/index'));
+				$model->save();
+				$model->emailManager();
+				$this->redirect($this->createUrl('reservation/index'));
 			}
 		}
 		$this->render('create',array('model'=>$model,'customersNames'=>$customersNames,'roomsNames'=>$roomsNames));
