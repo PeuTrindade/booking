@@ -21,13 +21,18 @@ class ConfirmationCodeController extends Controller
 		);
 	}
 
-	public function actionIndex($guestEmail) {
-		if(isset($guestEmail)){
-			$searchConfirmationCode = Confirmationcode::model()->findAll('guestEmail=:guestEmail',array(':guestEmail'=>$guestEmail));
-			
-		}
+	public function actionIndex($guestEmail,$reservationId) {
+		$model = $this->loadCodeByGuestEmail($guestEmail,$reservationId);
+		
+		if($model->validateCode())
+			$this->render('index',array('isValid'=>true));
+		else 
+			$this->render('index',array('isValid'=>false));
+	}
 
-		$this->render('index');
+	private function loadCodeByGuestEmail($guestEmail,$reservationId) {
+		$model = Confirmationcode::model()->findByAttributes(array('guestEmail'=>$guestEmail,'reservationId'=>$reservationId));
+		return $model;
 	}
 
 	// Uncomment the following methods and override them if needed

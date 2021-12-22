@@ -106,11 +106,47 @@ class Confirmationcode extends CActiveRecord
 		return parent::model($className);
 	}
 
-	public function uploadCode($codeContent,$guest) {
+	public function uploadCode($params,$cleanGuestEmail) {
 		$folder = 'qrcodes/';
-		$fileName = $guest.'.png';
+		$fileName = $cleanGuestEmail.'.png';
 		$path = $folder.$fileName;
-
+		$codeContent = 'http://localhost/booking/index.php?r=confirmationcode/index&guestEmail='.$params['guestEmail'].'&reservationId='.$params['reservationId'];
+		
 		QRcode::png($codeContent,$path);
+	}
+
+	public function validateCode() {
+		if($this->validateCodeSituation() && $this->validateCodeByDateAndTime()) {
+			$this->invalidateCode();
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	private function validateCodeSituation() {
+		if($this->situation === 'valid')
+			return true;
+		else 
+			return false;
+	}
+
+	private function validateCodeByDateAndTime() {
+		date_default_timezone_set('America/Sao_Paulo');
+		$currentDate = date('Y-m-d');
+		$currentTime = date('H:i:00');
+
+		$findReservationById = Reservation::model()->findByPk($this->reservationId);
+
+		if($findReservationById->bookingDate === $currentDate && $findReservationById->startTime === $currentTime)
+			return true;
+		else 
+			return false;
+	}
+
+	private function invalidateCode() {
+		$this->situation = 'invalid';
+		$this->save();
 	}
 }

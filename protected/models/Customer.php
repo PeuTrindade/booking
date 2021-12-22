@@ -36,7 +36,6 @@ class Customer extends CActiveRecord
 			array('personCode, phoneNumber', 'numerical', 'integerOnly'=>true),
 			array('name, email', 'length', 'max'=>255),
 			array('email','checkCustomerEmail'),
-			array('birthday', 'safe'), 
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, name, personCode, email, phoneNumber, birthday', 'safe', 'on'=>'search'),

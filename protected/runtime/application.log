@@ -5251,3 +5251,1058 @@ Stack trace:
 #19 {main}
 REQUEST_URI=/booking/index.php?r=confirmationcode/index&guestEmail=pedrinhotrindade14@gmail.com
 ---
+2021/12/22 11:28:20 [error] [exception.Error] Error: Call to a member function validateCode() on array in C:\wamp\www\Booking\protected\controllers\ConfirmationCodeController.php:26
+Stack trace:
+#0 [internal function]: ConfirmationCodeController->actionIndex('pedrinhotrindad...')
+#1 C:\Users\pedri\yii\framework\web\actions\CAction.php(115): ReflectionMethod->invokeArgs(Object(ConfirmationCodeController), Array)
+#2 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ConfirmationCodeController), Object(ReflectionMethod), Array)
+#3 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#5 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#7 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('index')
+#12 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('confirmationcod...')
+#13 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/booking/index.php?r=confirmationcode/index&guestEmail=pedrinhotrindade14@gmail.com
+---
+2021/12/22 11:34:53 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`booking`.`confirmationcodes`, CONSTRAINT `confirmationcodes_ibfk_1` FOREIGN KEY (`reservationId`) REFERENCES `reservations` (`id`)). The SQL statement executed was: DELETE FROM `reservations` WHERE `reservations`.`id`=11.
+in C:\wamp\www\Booking\protected\controllers\ReservationController.php (91)
+in C:\wamp\www\Booking\index.php (13)
+2021/12/22 11:34:53 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`booking`.`confirmationcodes`, CONSTRAINT `confirmationcodes_ibfk_1` FOREIGN KEY (`reservationId`) REFERENCES `reservations` (`id`)). The SQL statement executed was: DELETE FROM `reservations` WHERE `reservations`.`id`=11 in C:\Users\pedri\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\Users\pedri\yii\framework\db\ar\CActiveRecord.php(1810): CDbCommand->execute()
+#1 C:\Users\pedri\yii\framework\db\ar\CActiveRecord.php(1230): CActiveRecord->deleteByPk('11')
+#2 C:\wamp\www\Booking\protected\controllers\ReservationController.php(91): CActiveRecord->delete()
+#3 [internal function]: ReservationController->actionDelete('11')
+#4 C:\Users\pedri\yii\framework\web\actions\CAction.php(115): ReflectionMethod->invokeArgs(Object(ReservationController), Array)
+#5 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ReservationController), Object(ReflectionMethod), Array)
+#6 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#8 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#10 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#11 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('delete')
+#15 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('reservation/del...')
+#16 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/booking/index.php?r=reservation/delete&id=11
+HTTP_REFERER=http://localhost/booking/index.php?r=reservation/view&id=11
+---
+2021/12/22 11:37:56 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`booking`.`confirmationcodes`, CONSTRAINT `confirmationcodes_ibfk_1` FOREIGN KEY (`reservationId`) REFERENCES `reservations` (`id`)). The SQL statement executed was: DELETE FROM `reservations` WHERE `reservations`.`id`=11.
+in C:\wamp\www\Booking\protected\controllers\ReservationController.php (92)
+in C:\wamp\www\Booking\index.php (13)
+2021/12/22 11:37:56 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`booking`.`confirmationcodes`, CONSTRAINT `confirmationcodes_ibfk_1` FOREIGN KEY (`reservationId`) REFERENCES `reservations` (`id`)). The SQL statement executed was: DELETE FROM `reservations` WHERE `reservations`.`id`=11 in C:\Users\pedri\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\Users\pedri\yii\framework\db\ar\CActiveRecord.php(1810): CDbCommand->execute()
+#1 C:\Users\pedri\yii\framework\db\ar\CActiveRecord.php(1230): CActiveRecord->deleteByPk('11')
+#2 C:\wamp\www\Booking\protected\controllers\ReservationController.php(92): CActiveRecord->delete()
+#3 [internal function]: ReservationController->actionDelete('11')
+#4 C:\Users\pedri\yii\framework\web\actions\CAction.php(115): ReflectionMethod->invokeArgs(Object(ReservationController), Array)
+#5 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ReservationController), Object(ReflectionMethod), Array)
+#6 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#8 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#10 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#11 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('delete')
+#15 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('reservation/del...')
+#16 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/booking/index.php?r=reservation/delete&id=11
+HTTP_REFERER=http://localhost/booking/index.php?r=reservation/view&id=11
+---
+2021/12/22 11:38:55 [error] [php] Cannot modify header information - headers already sent by (output started at C:\wamp\www\Booking\protected\controllers\ReservationController.php:93) (C:\Users\pedri\yii\framework\web\CHttpRequest.php:890)
+Stack trace:
+#0 C:\Users\pedri\yii\framework\web\CHttpRequest.php(890): header()
+#1 C:\Users\pedri\yii\framework\web\CController.php(1033): CHttpRequest->redirect()
+#2 C:\wamp\www\Booking\protected\controllers\ReservationController.php(94): ReservationController->redirect()
+#3 unknown(0): ReservationController->actionDelete()
+#4 C:\Users\pedri\yii\framework\web\actions\CAction.php(115): ReflectionMethod->invokeArgs()
+#5 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#6 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#7 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): ReservationController->runAction()
+#8 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\Users\pedri\yii\framework\web\CController.php(1148): CAccessControlFilter->filter()
+#10 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): ReservationController->filterAccessControl()
+#11 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#12 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\Users\pedri\yii\framework\web\CController.php(265): ReservationController->runActionWithFilters()
+#14 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): ReservationController->run()
+#15 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#16 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 C:\wamp\www\Booking\index.php(13): CWebApplication->run()
+REQUEST_URI=/booking/index.php?r=reservation/delete&id=11
+in C:\wamp\www\Booking\protected\controllers\ReservationController.php (94)
+in C:\wamp\www\Booking\index.php (13)
+2021/12/22 11:39:04 [error] [php] Cannot modify header information - headers already sent by (output started at C:\wamp\www\Booking\protected\controllers\ReservationController.php:93) (C:\Users\pedri\yii\framework\web\CHttpRequest.php:890)
+Stack trace:
+#0 C:\Users\pedri\yii\framework\web\CHttpRequest.php(890): header()
+#1 C:\Users\pedri\yii\framework\web\CController.php(1033): CHttpRequest->redirect()
+#2 C:\wamp\www\Booking\protected\controllers\ReservationController.php(94): ReservationController->redirect()
+#3 unknown(0): ReservationController->actionDelete()
+#4 C:\Users\pedri\yii\framework\web\actions\CAction.php(115): ReflectionMethod->invokeArgs()
+#5 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#6 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#7 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): ReservationController->runAction()
+#8 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\Users\pedri\yii\framework\web\CController.php(1148): CAccessControlFilter->filter()
+#10 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): ReservationController->filterAccessControl()
+#11 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#12 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\Users\pedri\yii\framework\web\CController.php(265): ReservationController->runActionWithFilters()
+#14 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): ReservationController->run()
+#15 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#16 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 C:\wamp\www\Booking\index.php(13): CWebApplication->run()
+REQUEST_URI=/booking/index.php?r=reservation/delete&id=11
+in C:\wamp\www\Booking\protected\controllers\ReservationController.php (94)
+in C:\wamp\www\Booking\index.php (13)
+2021/12/22 11:39:32 [error] [exception.Error] Error: Call to a member function delete() on array in C:\wamp\www\Booking\protected\controllers\ReservationController.php:93
+Stack trace:
+#0 [internal function]: ReservationController->actionDelete('11')
+#1 C:\Users\pedri\yii\framework\web\actions\CAction.php(115): ReflectionMethod->invokeArgs(Object(ReservationController), Array)
+#2 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ReservationController), Object(ReflectionMethod), Array)
+#3 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#5 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#7 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('delete')
+#12 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('reservation/del...')
+#13 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/booking/index.php?r=reservation/delete&id=11
+HTTP_REFERER=http://localhost/booking/index.php?r=reservation/view&id=11
+---
+2021/12/22 11:41:27 [error] [exception.Error] Error: Call to a member function validateCode() on array in C:\wamp\www\Booking\protected\controllers\ConfirmationCodeController.php:26
+Stack trace:
+#0 [internal function]: ConfirmationCodeController->actionIndex('pedrinhotrindad...')
+#1 C:\Users\pedri\yii\framework\web\actions\CAction.php(115): ReflectionMethod->invokeArgs(Object(ConfirmationCodeController), Array)
+#2 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ConfirmationCodeController), Object(ReflectionMethod), Array)
+#3 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#5 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#7 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('index')
+#12 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('confirmationcod...')
+#13 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/booking/index.php?r=confirmationcode/index&guestEmail=pedrinhotrindade14@gmail.com&reservationId=12
+---
+2021/12/22 11:44:58 [error] [php] Array to string conversion (C:\wamp\www\Booking\protected\controllers\ConfirmationCodeController.php:33)
+Stack trace:
+#0 C:\wamp\www\Booking\protected\controllers\ConfirmationCodeController.php(25): ConfirmationCodeController->loadCodeByGuestEmail()
+#1 unknown(0): ConfirmationCodeController->actionIndex()
+#2 C:\Users\pedri\yii\framework\web\actions\CAction.php(115): ReflectionMethod->invokeArgs()
+#3 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#4 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): ConfirmationCodeController->runAction()
+#6 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\Users\pedri\yii\framework\web\CController.php(1148): CAccessControlFilter->filter()
+#8 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): ConfirmationCodeController->filterAccessControl()
+#9 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#10 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\Users\pedri\yii\framework\web\CController.php(265): ConfirmationCodeController->runActionWithFilters()
+#12 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): ConfirmationCodeController->run()
+#13 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\wamp\www\Booking\index.php(13): CWebApplication->run()
+REQUEST_URI=/booking/index.php?r=confirmationcode/index&guestEmail=pedrinhotrindade14@gmail.com&reservationId=12
+in C:\wamp\www\Booking\protected\controllers\ConfirmationCodeController.php (33)
+in C:\wamp\www\Booking\protected\controllers\ConfirmationCodeController.php (25)
+in C:\wamp\www\Booking\index.php (13)
+2021/12/22 11:48:46 [error] [php] Non-static method CActiveRecord::find() should not be called statically (C:\wamp\www\Booking\protected\controllers\ConfirmationCodeController.php:33)
+Stack trace:
+#0 C:\wamp\www\Booking\protected\controllers\ConfirmationCodeController.php(25): ConfirmationCodeController->loadCodeByGuestEmail()
+#1 unknown(0): ConfirmationCodeController->actionIndex()
+#2 C:\Users\pedri\yii\framework\web\actions\CAction.php(115): ReflectionMethod->invokeArgs()
+#3 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#4 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): ConfirmationCodeController->runAction()
+#6 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\Users\pedri\yii\framework\web\CController.php(1148): CAccessControlFilter->filter()
+#8 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): ConfirmationCodeController->filterAccessControl()
+#9 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#10 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\Users\pedri\yii\framework\web\CController.php(265): ConfirmationCodeController->runActionWithFilters()
+#12 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): ConfirmationCodeController->run()
+#13 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\wamp\www\Booking\index.php(13): CWebApplication->run()
+REQUEST_URI=/booking/index.php?r=confirmationcode/index&guestEmail=pedrinhotrindade14@gmail.com&reservationId=12
+in C:\wamp\www\Booking\protected\controllers\ConfirmationCodeController.php (33)
+in C:\wamp\www\Booking\protected\controllers\ConfirmationCodeController.php (25)
+in C:\wamp\www\Booking\index.php (13)
+2021/12/22 11:49:17 [error] [exception.CException] CException: Confirmationcode and its behaviors do not have a method or closure named "where". in C:\Users\pedri\yii\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\Users\pedri\yii\framework\db\ar\CActiveRecord.php(229): CComponent->__call('where', Array)
+#1 C:\wamp\www\Booking\protected\controllers\ConfirmationCodeController.php(33): CActiveRecord->__call('where', Array)
+#2 C:\wamp\www\Booking\protected\controllers\ConfirmationCodeController.php(25): ConfirmationCodeController->loadCodeByGuestEmail('pedrinhotrindad...', '12')
+#3 [internal function]: ConfirmationCodeController->actionIndex('pedrinhotrindad...', '12')
+#4 C:\Users\pedri\yii\framework\web\actions\CAction.php(115): ReflectionMethod->invokeArgs(Object(ConfirmationCodeController), Array)
+#5 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ConfirmationCodeController), Object(ReflectionMethod), Array)
+#6 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#8 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#10 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#11 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('index')
+#15 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('confirmationcod...')
+#16 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/booking/index.php?r=confirmationcode/index&guestEmail=pedrinhotrindade14@gmail.com&reservationId=12
+---
+2021/12/22 11:53:50 [error] [php] Object of class DateTime could not be converted to string (C:\wamp\www\Booking\protected\models\Confirmationcode.php:131)
+Stack trace:
+#0 C:\wamp\www\Booking\protected\models\Confirmationcode.php(119): Confirmationcode->validateCodeByDateAndTime()
+#1 C:\wamp\www\Booking\protected\controllers\ConfirmationCodeController.php(26): Confirmationcode->validateCode()
+#2 unknown(0): ConfirmationCodeController->actionIndex()
+#3 C:\Users\pedri\yii\framework\web\actions\CAction.php(115): ReflectionMethod->invokeArgs()
+#4 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#5 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): ConfirmationCodeController->runAction()
+#7 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\Users\pedri\yii\framework\web\CController.php(1148): CAccessControlFilter->filter()
+#9 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): ConfirmationCodeController->filterAccessControl()
+#10 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#11 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\Users\pedri\yii\framework\web\CController.php(265): ConfirmationCodeController->runActionWithFilters()
+#13 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): ConfirmationCodeController->run()
+#14 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#15 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#16 C:\wamp\www\Booking\index.php(13): CWebApplication->run()
+REQUEST_URI=/booking/index.php?r=confirmationcode/index&guestEmail=pedrinhotrindade14@gmail.com&reservationId=12
+in C:\wamp\www\Booking\protected\models\Confirmationcode.php (131)
+in C:\wamp\www\Booking\protected\models\Confirmationcode.php (119)
+in C:\wamp\www\Booking\protected\controllers\ConfirmationCodeController.php (26)
+2021/12/22 11:55:46 [error] [exception.Error] Error: Call to a member function validateCode() on array in C:\wamp\www\Booking\protected\controllers\ConfirmationCodeController.php:26
+Stack trace:
+#0 [internal function]: ConfirmationCodeController->actionIndex('pedrinhotrindad...', '12')
+#1 C:\Users\pedri\yii\framework\web\actions\CAction.php(115): ReflectionMethod->invokeArgs(Object(ConfirmationCodeController), Array)
+#2 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ConfirmationCodeController), Object(ReflectionMethod), Array)
+#3 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#5 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#7 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('index')
+#12 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('confirmationcod...')
+#13 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/booking/index.php?r=confirmationcode/index&guestEmail=pedrinhotrindade14@gmail.com&reservationId=12
+---
+2021/12/22 11:59:03 [error] [exception.TypeError] TypeError: DateTime::__construct() expects parameter 1 to be string, object given in C:\wamp\www\Booking\protected\models\Confirmationcode.php:130
+Stack trace:
+#0 C:\wamp\www\Booking\protected\models\Confirmationcode.php(130): DateTime->__construct(Object(DateTimeZone))
+#1 C:\wamp\www\Booking\protected\models\Confirmationcode.php(119): Confirmationcode->validateCodeByDateAndTime()
+#2 C:\wamp\www\Booking\protected\controllers\ConfirmationCodeController.php(26): Confirmationcode->validateCode()
+#3 [internal function]: ConfirmationCodeController->actionIndex('pedrinhotrindad...', '12')
+#4 C:\Users\pedri\yii\framework\web\actions\CAction.php(115): ReflectionMethod->invokeArgs(Object(ConfirmationCodeController), Array)
+#5 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ConfirmationCodeController), Object(ReflectionMethod), Array)
+#6 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#8 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#10 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#11 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('index')
+#15 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('confirmationcod...')
+#16 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/booking/index.php?r=confirmationcode/index&guestEmail=pedrinhotrindade14@gmail.com&reservationId=12
+---
+2021/12/22 12:00:06 [error] [exception.ParseError] ParseError: syntax error, unexpected '}', expecting ',' or ';' in C:\wamp\www\Booking\protected\models\Confirmationcode.php:133
+Stack trace:
+#0 [internal function]: YiiBase::autoload('Confirmationcod...')
+#1 C:\wamp\www\Booking\protected\controllers\ConfirmationCodeController.php(32): spl_autoload_call('Confirmationcod...')
+#2 C:\wamp\www\Booking\protected\controllers\ConfirmationCodeController.php(25): ConfirmationCodeController->loadCodeByGuestEmail('pedrinhotrindad...', '12')
+#3 [internal function]: ConfirmationCodeController->actionIndex('pedrinhotrindad...', '12')
+#4 C:\Users\pedri\yii\framework\web\actions\CAction.php(115): ReflectionMethod->invokeArgs(Object(ConfirmationCodeController), Array)
+#5 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ConfirmationCodeController), Object(ReflectionMethod), Array)
+#6 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#8 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#10 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#11 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('index')
+#15 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('confirmationcod...')
+#16 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/booking/index.php?r=confirmationcode/index&guestEmail=pedrinhotrindade14@gmail.com&reservationId=12
+---
+2021/12/22 12:23:33 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`booking`.`confirmationcodes`, CONSTRAINT `confirmationcodes_ibfk_1` FOREIGN KEY (`reservationId`) REFERENCES `reservations` (`id`)). The SQL statement executed was: DELETE FROM `reservations` WHERE `reservations`.`id`=12.
+in C:\wamp\www\Booking\protected\controllers\ReservationController.php (92)
+in C:\wamp\www\Booking\index.php (13)
+2021/12/22 12:23:33 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`booking`.`confirmationcodes`, CONSTRAINT `confirmationcodes_ibfk_1` FOREIGN KEY (`reservationId`) REFERENCES `reservations` (`id`)). The SQL statement executed was: DELETE FROM `reservations` WHERE `reservations`.`id`=12 in C:\Users\pedri\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\Users\pedri\yii\framework\db\ar\CActiveRecord.php(1810): CDbCommand->execute()
+#1 C:\Users\pedri\yii\framework\db\ar\CActiveRecord.php(1230): CActiveRecord->deleteByPk('12')
+#2 C:\wamp\www\Booking\protected\controllers\ReservationController.php(92): CActiveRecord->delete()
+#3 [internal function]: ReservationController->actionDelete('12')
+#4 C:\Users\pedri\yii\framework\web\actions\CAction.php(115): ReflectionMethod->invokeArgs(Object(ReservationController), Array)
+#5 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ReservationController), Object(ReflectionMethod), Array)
+#6 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#8 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#10 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#11 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('delete')
+#15 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('reservation/del...')
+#16 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/booking/index.php?r=reservation/delete&id=12
+HTTP_REFERER=http://localhost/booking/index.php?r=reservation/view&id=12
+---
+2021/12/22 12:29:05 [error] [exception.ParseError] ParseError: syntax error, unexpected '}', expecting ',' or ';' in C:\wamp\www\Booking\protected\models\Confirmationcode.php:151
+Stack trace:
+#0 [internal function]: YiiBase::autoload('Confirmationcod...')
+#1 C:\wamp\www\Booking\protected\controllers\ConfirmationCodeController.php(34): spl_autoload_call('Confirmationcod...')
+#2 C:\wamp\www\Booking\protected\controllers\ConfirmationCodeController.php(25): ConfirmationCodeController->loadCodeByGuestEmail('pedrinhotrindad...', '13')
+#3 [internal function]: ConfirmationCodeController->actionIndex('pedrinhotrindad...', '13')
+#4 C:\Users\pedri\yii\framework\web\actions\CAction.php(115): ReflectionMethod->invokeArgs(Object(ConfirmationCodeController), Array)
+#5 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ConfirmationCodeController), Object(ReflectionMethod), Array)
+#6 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#8 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#10 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#11 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('index')
+#15 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('confirmationcod...')
+#16 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/booking/index.php?r=confirmationcode/index&guestEmail=pedrinhotrindade14@gmail.com&reservationId=13
+---
+2021/12/22 12:35:53 [error] [php] Undefined variable: model (C:\wamp\www\Booking\protected\models\Confirmationcode.php:128)
+Stack trace:
+#0 C:\wamp\www\Booking\protected\models\Confirmationcode.php(118): Confirmationcode->validateCodeSituation()
+#1 C:\wamp\www\Booking\protected\controllers\ConfirmationCodeController.php(27): Confirmationcode->validateCode()
+#2 unknown(0): ConfirmationCodeController->actionIndex()
+#3 C:\Users\pedri\yii\framework\web\actions\CAction.php(115): ReflectionMethod->invokeArgs()
+#4 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#5 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): ConfirmationCodeController->runAction()
+#7 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\Users\pedri\yii\framework\web\CController.php(1148): CAccessControlFilter->filter()
+#9 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): ConfirmationCodeController->filterAccessControl()
+#10 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#11 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\Users\pedri\yii\framework\web\CController.php(265): ConfirmationCodeController->runActionWithFilters()
+#13 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): ConfirmationCodeController->run()
+#14 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#15 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#16 C:\wamp\www\Booking\index.php(13): CWebApplication->run()
+REQUEST_URI=/booking/index.php?r=confirmationcode/index&guestEmail=pedrinhotrindade14@gmail.com&reservationId=13
+in C:\wamp\www\Booking\protected\models\Confirmationcode.php (128)
+in C:\wamp\www\Booking\protected\models\Confirmationcode.php (118)
+in C:\wamp\www\Booking\protected\controllers\ConfirmationCodeController.php (27)
+2021/12/22 12:38:32 [error] [exception.ParseError] ParseError: syntax error, unexpected 'else' (T_ELSE) in C:\wamp\www\Booking\protected\models\Confirmationcode.php:131
+Stack trace:
+#0 [internal function]: YiiBase::autoload('Confirmationcod...')
+#1 C:\wamp\www\Booking\protected\controllers\ConfirmationCodeController.php(34): spl_autoload_call('Confirmationcod...')
+#2 C:\wamp\www\Booking\protected\controllers\ConfirmationCodeController.php(25): ConfirmationCodeController->loadCodeByGuestEmail('pedrinhotrindad...', '13')
+#3 [internal function]: ConfirmationCodeController->actionIndex('pedrinhotrindad...', '13')
+#4 C:\Users\pedri\yii\framework\web\actions\CAction.php(115): ReflectionMethod->invokeArgs(Object(ConfirmationCodeController), Array)
+#5 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ConfirmationCodeController), Object(ReflectionMethod), Array)
+#6 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#8 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#10 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#11 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('index')
+#15 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('confirmationcod...')
+#16 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/booking/index.php?r=confirmationcode/index&guestEmail=pedrinhotrindade14@gmail.com&reservationId=13
+---
+2021/12/22 13:15:13 [error] [php] include(css/confirmationCode/isNotValid.css): failed to open stream: No such file or directory (C:\wamp\www\Booking\protected\views\confirmationCode\isNotValid.php:4)
+Stack trace:
+#0 C:\wamp\www\Booking\protected\views\confirmationCode\isNotValid.php(4): include()
+#1 C:\Users\pedri\yii\framework\web\CBaseController.php(126): require()
+#2 C:\Users\pedri\yii\framework\web\CBaseController.php(95): ConfirmationCodeController->renderInternal()
+#3 C:\Users\pedri\yii\framework\web\CController.php(872): ConfirmationCodeController->renderFile()
+#4 C:\wamp\www\Booking\protected\views\confirmationCode\index.php(8): ConfirmationCodeController->renderPartial()
+#5 C:\Users\pedri\yii\framework\web\CBaseController.php(126): require()
+#6 C:\Users\pedri\yii\framework\web\CBaseController.php(95): ConfirmationCodeController->renderInternal()
+#7 C:\Users\pedri\yii\framework\web\CController.php(872): ConfirmationCodeController->renderFile()
+#8 C:\Users\pedri\yii\framework\web\CController.php(785): ConfirmationCodeController->renderPartial()
+#9 C:\wamp\www\Booking\protected\controllers\ConfirmationCodeController.php(30): ConfirmationCodeController->render()
+#10 unknown(0): ConfirmationCodeController->actionIndex()
+#11 C:\Users\pedri\yii\framework\web\actions\CAction.php(115): ReflectionMethod->invokeArgs()
+#12 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#13 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#14 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): ConfirmationCodeController->runAction()
+#15 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#16 C:\Users\pedri\yii\framework\web\CController.php(1148): CAccessControlFilter->filter()
+#17 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): ConfirmationCodeController->filterAccessControl()
+#18 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#19 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#20 C:\Users\pedri\yii\framework\web\CController.php(265): ConfirmationCodeController->runActionWithFilters()
+#21 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): ConfirmationCodeController->run()
+#22 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#23 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#24 C:\wamp\www\Booking\index.php(13): CWebApplication->run()
+REQUEST_URI=/booking/index.php?r=confirmationcode/index&guestEmail=devpedrotrindade@gmail.com&reservationId=14
+in C:\wamp\www\Booking\protected\views\confirmationCode\isNotValid.php (4)
+in C:\wamp\www\Booking\protected\views\confirmationCode\isNotValid.php (4)
+in C:\wamp\www\Booking\protected\views\confirmationCode\index.php (8)
+2021/12/22 13:15:16 [error] [php] include(css/confirmationCode/isNotValid.css): failed to open stream: No such file or directory (C:\wamp\www\Booking\protected\views\confirmationCode\isNotValid.php:4)
+Stack trace:
+#0 C:\wamp\www\Booking\protected\views\confirmationCode\isNotValid.php(4): include()
+#1 C:\Users\pedri\yii\framework\web\CBaseController.php(126): require()
+#2 C:\Users\pedri\yii\framework\web\CBaseController.php(95): ConfirmationCodeController->renderInternal()
+#3 C:\Users\pedri\yii\framework\web\CController.php(872): ConfirmationCodeController->renderFile()
+#4 C:\wamp\www\Booking\protected\views\confirmationCode\index.php(8): ConfirmationCodeController->renderPartial()
+#5 C:\Users\pedri\yii\framework\web\CBaseController.php(126): require()
+#6 C:\Users\pedri\yii\framework\web\CBaseController.php(95): ConfirmationCodeController->renderInternal()
+#7 C:\Users\pedri\yii\framework\web\CController.php(872): ConfirmationCodeController->renderFile()
+#8 C:\Users\pedri\yii\framework\web\CController.php(785): ConfirmationCodeController->renderPartial()
+#9 C:\wamp\www\Booking\protected\controllers\ConfirmationCodeController.php(30): ConfirmationCodeController->render()
+#10 unknown(0): ConfirmationCodeController->actionIndex()
+#11 C:\Users\pedri\yii\framework\web\actions\CAction.php(115): ReflectionMethod->invokeArgs()
+#12 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#13 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#14 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): ConfirmationCodeController->runAction()
+#15 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#16 C:\Users\pedri\yii\framework\web\CController.php(1148): CAccessControlFilter->filter()
+#17 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): ConfirmationCodeController->filterAccessControl()
+#18 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#19 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#20 C:\Users\pedri\yii\framework\web\CController.php(265): ConfirmationCodeController->runActionWithFilters()
+#21 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): ConfirmationCodeController->run()
+#22 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#23 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#24 C:\wamp\www\Booking\index.php(13): CWebApplication->run()
+REQUEST_URI=/booking/index.php?r=confirmationcode/index&guestEmail=devpedrotrindade@gmail.com&reservationId=14
+in C:\wamp\www\Booking\protected\views\confirmationCode\isNotValid.php (4)
+in C:\wamp\www\Booking\protected\views\confirmationCode\isNotValid.php (4)
+in C:\wamp\www\Booking\protected\views\confirmationCode\index.php (8)
+2021/12/22 13:15:16 [error] [php] include(css/confirmationCode/isNotValid.css): failed to open stream: No such file or directory (C:\wamp\www\Booking\protected\views\confirmationCode\isNotValid.php:4)
+Stack trace:
+#0 C:\wamp\www\Booking\protected\views\confirmationCode\isNotValid.php(4): include()
+#1 C:\Users\pedri\yii\framework\web\CBaseController.php(126): require()
+#2 C:\Users\pedri\yii\framework\web\CBaseController.php(95): ConfirmationCodeController->renderInternal()
+#3 C:\Users\pedri\yii\framework\web\CController.php(872): ConfirmationCodeController->renderFile()
+#4 C:\wamp\www\Booking\protected\views\confirmationCode\index.php(8): ConfirmationCodeController->renderPartial()
+#5 C:\Users\pedri\yii\framework\web\CBaseController.php(126): require()
+#6 C:\Users\pedri\yii\framework\web\CBaseController.php(95): ConfirmationCodeController->renderInternal()
+#7 C:\Users\pedri\yii\framework\web\CController.php(872): ConfirmationCodeController->renderFile()
+#8 C:\Users\pedri\yii\framework\web\CController.php(785): ConfirmationCodeController->renderPartial()
+#9 C:\wamp\www\Booking\protected\controllers\ConfirmationCodeController.php(30): ConfirmationCodeController->render()
+#10 unknown(0): ConfirmationCodeController->actionIndex()
+#11 C:\Users\pedri\yii\framework\web\actions\CAction.php(115): ReflectionMethod->invokeArgs()
+#12 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#13 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#14 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): ConfirmationCodeController->runAction()
+#15 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#16 C:\Users\pedri\yii\framework\web\CController.php(1148): CAccessControlFilter->filter()
+#17 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): ConfirmationCodeController->filterAccessControl()
+#18 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#19 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#20 C:\Users\pedri\yii\framework\web\CController.php(265): ConfirmationCodeController->runActionWithFilters()
+#21 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): ConfirmationCodeController->run()
+#22 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#23 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#24 C:\wamp\www\Booking\index.php(13): CWebApplication->run()
+REQUEST_URI=/booking/index.php?r=confirmationcode/index&guestEmail=devpedrotrindade@gmail.com&reservationId=14
+in C:\wamp\www\Booking\protected\views\confirmationCode\isNotValid.php (4)
+in C:\wamp\www\Booking\protected\views\confirmationCode\isNotValid.php (4)
+in C:\wamp\www\Booking\protected\views\confirmationCode\index.php (8)
+2021/12/22 13:52:09 [error] [php] include(Url.php): failed to open stream: No such file or directory (C:\Users\pedri\yii\framework\YiiBase.php:463)
+Stack trace:
+#0 C:\Users\pedri\yii\framework\YiiBase.php(463): include()
+#1 unknown(0): autoload()
+#2 C:\wamp\www\Booking\protected\controllers\ReservationController.php(40): spl_autoload_call()
+#3 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(49): ReservationController->actionCreate()
+#4 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): ReservationController->runAction()
+#6 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\Users\pedri\yii\framework\web\CController.php(1148): CAccessControlFilter->filter()
+#8 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): ReservationController->filterAccessControl()
+#9 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#10 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\Users\pedri\yii\framework\web\CController.php(265): ReservationController->runActionWithFilters()
+#12 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): ReservationController->run()
+#13 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\wamp\www\Booking\index.php(13): CWebApplication->run()
+REQUEST_URI=/booking/index.php?r=reservation/create
+in C:\wamp\www\Booking\protected\controllers\ReservationController.php (40)
+in C:\wamp\www\Booking\index.php (13)
+2021/12/22 13:52:42 [error] [exception.Error] Error: Call to undefined method Yii::BaseUrl() in C:\wamp\www\Booking\protected\controllers\ReservationController.php:40
+Stack trace:
+#0 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(49): ReservationController->actionCreate()
+#1 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#2 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#3 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#5 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#7 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#10 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('reservation/cre...')
+#11 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#12 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/booking/index.php?r=reservation/create
+HTTP_REFERER=http://localhost/booking/index.php?r=reservation/index
+---
+2021/12/22 13:52:49 [error] [exception.Error] Error: Call to undefined method Yii::Base() in C:\wamp\www\Booking\protected\controllers\ReservationController.php:40
+Stack trace:
+#0 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(49): ReservationController->actionCreate()
+#1 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#2 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#3 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#5 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#7 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#10 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('reservation/cre...')
+#11 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#12 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/booking/index.php?r=reservation/create
+HTTP_REFERER=http://localhost/booking/index.php?r=reservation/index
+---
+2021/12/22 13:53:01 [error] [exception.Error] Error: Call to undefined method YiiBase::Url() in C:\wamp\www\Booking\protected\controllers\ReservationController.php:40
+Stack trace:
+#0 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(49): ReservationController->actionCreate()
+#1 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#2 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#3 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#5 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#7 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#10 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('reservation/cre...')
+#11 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#12 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/booking/index.php?r=reservation/create
+HTTP_REFERER=http://localhost/booking/index.php?r=reservation/index
+---
+2021/12/22 13:56:40 [error] [exception.Error] Error: Undefined class constant 'baseUrl' in C:\wamp\www\Booking\protected\controllers\ReservationController.php:40
+Stack trace:
+#0 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(49): ReservationController->actionCreate()
+#1 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#2 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#3 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#5 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#7 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#10 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('reservation/cre...')
+#11 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#12 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/booking/index.php?r=reservation/create
+HTTP_REFERER=http://localhost/booking/index.php?r=reservation/index
+---
+2021/12/22 13:56:48 [error] [exception.Error] Error: Call to undefined method CBaseUrlRule::baseUrl() in C:\wamp\www\Booking\protected\controllers\ReservationController.php:40
+Stack trace:
+#0 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(49): ReservationController->actionCreate()
+#1 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#2 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#3 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#5 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#7 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#10 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('reservation/cre...')
+#11 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#12 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/booking/index.php?r=reservation/create
+HTTP_REFERER=http://localhost/booking/index.php?r=reservation/index
+---
+2021/12/22 13:57:05 [error] [exception.Error] Error: Call to undefined method CUrlManager::baseUrl() in C:\wamp\www\Booking\protected\controllers\ReservationController.php:40
+Stack trace:
+#0 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(49): ReservationController->actionCreate()
+#1 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#2 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#3 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#5 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#7 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#10 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('reservation/cre...')
+#11 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#12 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/booking/index.php?r=reservation/create
+HTTP_REFERER=http://localhost/booking/index.php?r=reservation/index
+---
+2021/12/22 13:57:10 [error] [exception.Error] Error: Undefined class constant 'baseUrl' in C:\wamp\www\Booking\protected\controllers\ReservationController.php:40
+Stack trace:
+#0 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(49): ReservationController->actionCreate()
+#1 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#2 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#3 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#5 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#7 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#10 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('reservation/cre...')
+#11 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#12 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/booking/index.php?r=reservation/create
+HTTP_REFERER=http://localhost/booking/index.php?r=reservation/index
+---
+2021/12/22 13:57:44 [error] [php] Non-static method CUrlManager::getBaseUrl() should not be called statically (C:\wamp\www\Booking\protected\controllers\ReservationController.php:40)
+Stack trace:
+#0 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(49): ReservationController->actionCreate()
+#1 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): ReservationController->runAction()
+#3 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\Users\pedri\yii\framework\web\CController.php(1148): CAccessControlFilter->filter()
+#5 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): ReservationController->filterAccessControl()
+#6 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#7 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\Users\pedri\yii\framework\web\CController.php(265): ReservationController->runActionWithFilters()
+#9 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): ReservationController->run()
+#10 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#12 C:\wamp\www\Booking\index.php(13): CWebApplication->run()
+REQUEST_URI=/booking/index.php?r=reservation/create
+in C:\wamp\www\Booking\protected\controllers\ReservationController.php (40)
+in C:\wamp\www\Booking\index.php (13)
+2021/12/22 13:57:53 [error] [exception.ParseError] ParseError: syntax error, unexpected '->' (T_OBJECT_OPERATOR), expecting ',' or ';' in C:\wamp\www\Booking\protected\controllers\ReservationController.php:40
+Stack trace:
+#0 C:\Users\pedri\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('create/')
+#1 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('reservation/cre...')
+#2 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#3 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/booking/index.php?r=reservation/create
+HTTP_REFERER=http://localhost/booking/index.php?r=reservation/index
+---
+2021/12/22 13:58:26 [error] [exception.CException] CException: ReservationController and its behaviors do not have a method or closure named "getBaseUrl". in C:\Users\pedri\yii\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\wamp\www\Booking\protected\controllers\ReservationController.php(40): CComponent->__call('getBaseUrl', Array)
+#1 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(49): ReservationController->actionCreate()
+#2 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#4 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#6 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#7 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#8 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#9 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#11 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('reservation/cre...')
+#12 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#13 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/booking/index.php?r=reservation/create
+HTTP_REFERER=http://localhost/booking/index.php?r=reservation/index
+---
+2021/12/22 13:58:36 [error] [exception.CException] CException: Property "ReservationController.baseUrl" is not defined. in C:\Users\pedri\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\www\Booking\protected\controllers\ReservationController.php(40): CComponent->__get('baseUrl')
+#1 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(49): ReservationController->actionCreate()
+#2 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#4 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#6 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#7 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#8 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#9 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#11 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('reservation/cre...')
+#12 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#13 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/booking/index.php?r=reservation/create
+HTTP_REFERER=http://localhost/booking/index.php?r=reservation/index
+---
+2021/12/22 13:58:58 [error] [php] Use of undefined constant CUrlManager - assumed 'CUrlManager' (this will throw an Error in a future version of PHP) (C:\wamp\www\Booking\protected\controllers\ReservationController.php:40)
+Stack trace:
+#0 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(49): ReservationController->actionCreate()
+#1 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): ReservationController->runAction()
+#3 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\Users\pedri\yii\framework\web\CController.php(1148): CAccessControlFilter->filter()
+#5 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): ReservationController->filterAccessControl()
+#6 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#7 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\Users\pedri\yii\framework\web\CController.php(265): ReservationController->runActionWithFilters()
+#9 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): ReservationController->run()
+#10 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#12 C:\wamp\www\Booking\index.php(13): CWebApplication->run()
+REQUEST_URI=/booking/index.php?r=reservation/create
+in C:\wamp\www\Booking\protected\controllers\ReservationController.php (40)
+in C:\wamp\www\Booking\index.php (13)
+2021/12/22 13:59:25 [error] [exception.Error] Error: Undefined class constant 'CUrlManager' in C:\wamp\www\Booking\protected\controllers\ReservationController.php:40
+Stack trace:
+#0 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(49): ReservationController->actionCreate()
+#1 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#2 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#3 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#5 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#7 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#10 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('reservation/cre...')
+#11 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#12 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/booking/index.php?r=reservation/create
+HTTP_REFERER=http://localhost/booking/index.php?r=reservation/index
+---
+2021/12/22 13:59:29 [error] [php] Use of undefined constant Yii - assumed 'Yii' (this will throw an Error in a future version of PHP) (C:\wamp\www\Booking\protected\controllers\ReservationController.php:40)
+Stack trace:
+#0 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(49): ReservationController->actionCreate()
+#1 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): ReservationController->runAction()
+#3 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\Users\pedri\yii\framework\web\CController.php(1148): CAccessControlFilter->filter()
+#5 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): ReservationController->filterAccessControl()
+#6 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#7 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\Users\pedri\yii\framework\web\CController.php(265): ReservationController->runActionWithFilters()
+#9 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): ReservationController->run()
+#10 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#12 C:\wamp\www\Booking\index.php(13): CWebApplication->run()
+REQUEST_URI=/booking/index.php?r=reservation/create
+in C:\wamp\www\Booking\protected\controllers\ReservationController.php (40)
+in C:\wamp\www\Booking\index.php (13)
+2021/12/22 14:01:26 [error] [exception.Error] Error: Call to undefined function CUrlManager() in C:\wamp\www\Booking\protected\controllers\ReservationController.php:40
+Stack trace:
+#0 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(49): ReservationController->actionCreate()
+#1 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#2 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#3 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#5 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#7 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#10 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('reservation/cre...')
+#11 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#12 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/booking/index.php?r=reservation/create
+HTTP_REFERER=http://localhost/booking/index.php?r=reservation/index
+---
+2021/12/22 14:01:31 [error] [exception.ParseError] ParseError: syntax error, unexpected '->' (T_OBJECT_OPERATOR), expecting ',' or ';' in C:\wamp\www\Booking\protected\controllers\ReservationController.php:40
+Stack trace:
+#0 C:\Users\pedri\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('create/')
+#1 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('reservation/cre...')
+#2 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#3 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/booking/index.php?r=reservation/create
+HTTP_REFERER=http://localhost/booking/index.php?r=reservation/index
+---
+2021/12/22 14:01:39 [error] [exception.Error] Error: Undefined class constant 'baseUrl' in C:\wamp\www\Booking\protected\controllers\ReservationController.php:40
+Stack trace:
+#0 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(49): ReservationController->actionCreate()
+#1 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#2 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#3 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#5 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#7 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#10 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('reservation/cre...')
+#11 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#12 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/booking/index.php?r=reservation/create
+HTTP_REFERER=http://localhost/booking/index.php?r=reservation/index
+---
+2021/12/22 14:01:55 [error] [exception.ParseError] ParseError: syntax error, unexpected '->' (T_OBJECT_OPERATOR), expecting ',' or ';' in C:\wamp\www\Booking\protected\controllers\ReservationController.php:40
+Stack trace:
+#0 C:\Users\pedri\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('create/')
+#1 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('reservation/cre...')
+#2 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#3 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/booking/index.php?r=reservation/create
+HTTP_REFERER=http://localhost/booking/index.php?r=reservation/index
+---
+2021/12/22 14:02:04 [error] [exception.CException] CException: Property "CWebApplication.CUrlManager" is not defined. in C:\Users\pedri\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\Users\pedri\yii\framework\base\CModule.php(105): CComponent->__get('CUrlManager')
+#1 C:\wamp\www\Booking\protected\controllers\ReservationController.php(40): CModule->__get('CUrlManager')
+#2 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(49): ReservationController->actionCreate()
+#3 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#5 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#7 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#12 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('reservation/cre...')
+#13 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/booking/index.php?r=reservation/create
+HTTP_REFERER=http://localhost/booking/index.php?r=reservation/index
+---
+2021/12/22 14:02:27 [error] [exception.CException] CException: Property "ReservationController.baseUrl" is not defined. in C:\Users\pedri\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\www\Booking\protected\controllers\ReservationController.php(40): CComponent->__get('baseUrl')
+#1 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(49): ReservationController->actionCreate()
+#2 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#4 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#6 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#7 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#8 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#9 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#11 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('reservation/cre...')
+#12 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#13 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/booking/index.php?r=reservation/create
+HTTP_REFERER=http://localhost/booking/index.php?r=reservation/index
+---
+2021/12/22 14:03:40 [error] [exception.CException] CException: Property "ReservationController._baseUrl" is not defined. in C:\Users\pedri\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\www\Booking\protected\controllers\ReservationController.php(40): CComponent->__get('_baseUrl')
+#1 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(49): ReservationController->actionCreate()
+#2 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#4 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#6 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#7 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#8 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#9 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#11 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('reservation/cre...')
+#12 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#13 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/booking/index.php?r=reservation/create
+HTTP_REFERER=http://localhost/booking/index.php?r=reservation/index
+---
+2021/12/22 14:04:09 [error] [exception.Error] Error: Undefined class constant 'CUrlManager' in C:\wamp\www\Booking\protected\controllers\ReservationController.php:40
+Stack trace:
+#0 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(49): ReservationController->actionCreate()
+#1 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#2 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#3 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#5 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#7 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#10 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('reservation/cre...')
+#11 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#12 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/booking/index.php?r=reservation/create
+HTTP_REFERER=http://localhost/booking/index.php?r=reservation/index
+---
+2021/12/22 14:04:24 [error] [exception.ParseError] ParseError: syntax error, unexpected '->' (T_OBJECT_OPERATOR), expecting ',' or ';' in C:\wamp\www\Booking\protected\controllers\ReservationController.php:40
+Stack trace:
+#0 C:\Users\pedri\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('create/')
+#1 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('reservation/cre...')
+#2 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#3 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/booking/index.php?r=reservation/create
+HTTP_REFERER=http://localhost/booking/index.php?r=reservation/index
+---
+2021/12/22 14:05:13 [error] [exception.CException] CException: CWebApplication and its behaviors do not have a method or closure named "baseUrl". in C:\Users\pedri\yii\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\wamp\www\Booking\protected\controllers\ReservationController.php(40): CComponent->__call('baseUrl', Array)
+#1 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(49): ReservationController->actionCreate()
+#2 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#4 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#6 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#7 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#8 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#9 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#11 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('reservation/cre...')
+#12 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#13 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/booking/index.php?r=reservation/create
+HTTP_REFERER=http://localhost/booking/index.php?r=reservation/index
+---
+2021/12/22 14:05:17 [error] [exception.CException] CException: CWebApplication and its behaviors do not have a method or closure named "_baseUrl". in C:\Users\pedri\yii\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\wamp\www\Booking\protected\controllers\ReservationController.php(40): CComponent->__call('_baseUrl', Array)
+#1 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(49): ReservationController->actionCreate()
+#2 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#4 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#6 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#7 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#8 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#9 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#11 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('reservation/cre...')
+#12 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#13 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/booking/index.php?r=reservation/create
+HTTP_REFERER=http://localhost/booking/index.php?r=reservation/index
+---
+2021/12/22 14:06:41 [error] [exception.CException] CException: CWebApplication and its behaviors do not have a method or closure named "parseUrl". in C:\Users\pedri\yii\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\wamp\www\Booking\protected\controllers\ReservationController.php(40): CComponent->__call('parseUrl', Array)
+#1 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(49): ReservationController->actionCreate()
+#2 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#4 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#6 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#7 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#8 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#9 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#11 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('reservation/cre...')
+#12 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#13 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/booking/index.php?r=reservation/create
+HTTP_REFERER=http://localhost/booking/index.php?r=reservation/index
+---
+2021/12/22 14:07:17 [error] [exception.CException] CException: CWebApplication and its behaviors do not have a method or closure named "getParseUrl". in C:\Users\pedri\yii\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\wamp\www\Booking\protected\controllers\ReservationController.php(40): CComponent->__call('getParseUrl', Array)
+#1 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(49): ReservationController->actionCreate()
+#2 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#4 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#6 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#7 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#8 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#9 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#11 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('reservation/cre...')
+#12 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#13 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/booking/index.php?r=reservation/create
+HTTP_REFERER=http://localhost/booking/index.php?r=reservation/index
+---
+2021/12/22 14:07:42 [error] [exception.CException] CException: CWebApplication and its behaviors do not have a method or closure named "getUrlFormat". in C:\Users\pedri\yii\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\wamp\www\Booking\protected\controllers\ReservationController.php(40): CComponent->__call('getUrlFormat', Array)
+#1 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(49): ReservationController->actionCreate()
+#2 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#4 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#6 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#7 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#8 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#9 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#11 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('reservation/cre...')
+#12 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#13 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/booking/index.php?r=reservation/create
+HTTP_REFERER=http://localhost/booking/index.php?r=reservation/index
+---
+2021/12/22 14:15:14 [error] [exception.CException] CException: Confirmationcode and its behaviors do not have a method or closure named "createUrl". in C:\Users\pedri\yii\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\Users\pedri\yii\framework\db\ar\CActiveRecord.php(229): CComponent->__call('createUrl', Array)
+#1 C:\wamp\www\Booking\protected\models\Confirmationcode.php(113): CActiveRecord->__call('createUrl', Array)
+#2 C:\wamp\www\Booking\protected\models\Reservation.php(217): Confirmationcode->uploadCode(Array, 'pedrinhotrindad...')
+#3 C:\wamp\www\Booking\protected\models\Reservation.php(192): Reservation->fireEmail(Object(PHPMailer\PHPMailer\PHPMailer), Array)
+#4 C:\wamp\www\Booking\protected\controllers\ReservationController.php(49): Reservation->sendEmailToGuests()
+#5 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(49): ReservationController->actionCreate()
+#6 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#8 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#10 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#11 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#15 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('reservation/cre...')
+#16 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/booking/index.php?r=reservation/create
+HTTP_REFERER=http://localhost/booking/index.php?r=reservation/create
+---

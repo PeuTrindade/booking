@@ -1,0 +1,11 @@
+.confirmationcodeContainer {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 1rem;
+    margin-top: 2rem;
+}
+
+.confirmationcodeContainer h1 {
+    font-size: 1.8rem;
+    color: #00968c;
+    margin-bottom: 0;
+}

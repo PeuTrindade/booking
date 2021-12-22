@@ -159,7 +159,7 @@ class Reservation extends CActiveRecord
 					$this->addError($attribute,'Horario ocupado!');
 			}
 		}
-	}	
+	}
 
 	public function checkEndTimeIsAllow($attribute,$params) {
 		$formatStartTime = $this->returnFormatedTime($this->startTime,'His');
@@ -182,17 +182,13 @@ class Reservation extends CActiveRecord
 		$this->bookingDate = $date->format($dateFormat);
 	}
 
-	public function emailManager() {
+	public function sendEmailToGuests() {
 		$mail = new PHPMailer(true);
 		$guestsEmails = explode(',',$this->guestsEmails);
 		$this->formatDate('d/m/Y');
 
-		try {
-			$this->emailConfigurations($mail);
-			$this->sendEmail($mail,$guestsEmails);
-		} catch (Exception $e) {
-			echo 'erro'.$mail->ErrorInfo;
-		}
+		$this->emailConfigurations($mail);
+		$this->fireEmail($mail,$guestsEmails);
 	}
 
 	private function emailConfigurations($mail) {                    
@@ -205,30 +201,36 @@ class Reservation extends CActiveRecord
     	$mail->Port = '587';     
 	}
 
-	private function sendEmail($mail,$guestsEmails) {
-		foreach ($guestsEmails as $key => $guest) {
-			$cleanGuestEmail = explode('@',$guest)[0];
+	private function fireEmail($mail,$guestsEmails) {
+		$mail->setFrom($mail->Username,'Booking - Agendamento de salas');
+		$mail->Subject = 'Agendamento para o dia '.$this->bookingDate;
+		$mail->Body = 'Olá, estamos felizes em saber que você irá visitar nosso espaço no dia '.$this->bookingDate.'. Abaixo segue o seu QRcode, ele será usado como verificação, portanto, não perca esse email!';
+		$mail->isHTML(true);
+
+		foreach ($guestsEmails as $key => $guestEmail) {
+			$cleanGuestEmail = $this->clearGuestEmail($guestEmail);
 			$qrcode = new Confirmationcode;
-			$qrcode->uploadCode('http://localhost/booking/index.php?r=confirmationcode/index&guestEmail='.$guest,$cleanGuestEmail);
-			$mail->setFrom($mail->Username,'Booking - Agendamento de salas');
-			$mail->addAddress($guest);
+			$qrcode->uploadCode(array('guestEmail'=>$guestEmail,'reservationId'=>$this->id),$cleanGuestEmail);
+			$mail->addAddress($guestEmail);
 			$mail->addAttachment('qrcodes/'.$cleanGuestEmail.'.png');
-			$mail->isHTML(true);
-			$mail->Subject = 'Agendamento para o dia '.$this->bookingDate;
-			$mail->Body = 'Olá, estamos felizes em saber que você irá visitar nosso espaço no dia '.$this->bookingDate.'. Abaixo segue o seu QRcode, ele será usado como verificação, portanto, não perca esse email!';
 
 			$mail->send();	
-			$this->saveQrcode($qrcode,$guest);
+			$this->saveQrcode($qrcode,$guestEmail);
 			$mail->clearAttachments();
 			$mail->ClearAddresses();
 		}	
 	}
 
-	private function saveQrcode($qrcode,$guest) {
-		$qrcode->guestEmail = $guest;
+	private function saveQrcode($qrcode,$guestEmail) {
+		$qrcode->guestEmail = $guestEmail;
 		$qrcode->reservationId = $this->id;
 		$qrcode->situation = 'valid';
 
 		$qrcode->save();
+	}
+
+	private function clearGuestEmail($guestEmail) {
+		$cleanGuestEmail = explode('@',$guestEmail)[0];
+		return $cleanGuestEmail;
 	}
 }

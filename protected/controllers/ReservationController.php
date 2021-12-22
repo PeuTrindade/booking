@@ -46,7 +46,7 @@ class ReservationController extends Controller
 		
 			if($model->addCustomerAndRoomId() && $model->validate()){
 				$model->save();
-				$model->emailManager();
+				$model->sendEmailToGuests();
 				$this->redirect($this->createUrl('reservation/index'));
 			}
 		}
@@ -88,11 +88,18 @@ class ReservationController extends Controller
 		$model = $this->loadReservation($id);
 
 		if(isset($model) && isset($id)){
+			$this->deleteConfirmationCodes($id);
 			$model->delete();
 			$this->redirect($this->createUrl('reservation/index'));
 		} else {
 			throw new CHttpException(404,'Essa página requisitada não existe!');
 		}
+	}
+
+	private function deleteConfirmationCodes($reservationId) {
+		$findConfirmationCodes = Confirmationcode::model()->findAll('reservationId=:reservationId',array(':reservationId'=>$reservationId));
+		foreach ($findConfirmationCodes as $key => $confirmationCode)
+			$confirmationCode->delete();
 	}
 
 	private function loadReservation($reservationId) {
