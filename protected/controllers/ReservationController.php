@@ -15,7 +15,7 @@ class ReservationController extends Controller
 				'users'=>array('?'),
 			),
 			array('allow', 
-				'actions'=>array('index','create','update','delete','view'),
+				'actions'=>array('index','create','update','delete','view','teste'),
 				'users'=>array('@'),
 			),
 		);
@@ -117,6 +117,10 @@ class ReservationController extends Controller
 		}
 
 		return $namesArray;
+	}
+
+	public function actionTeste() {
+		echo 'oi';
 	}
 	
 	// Uncomment the following methods and override them if needed

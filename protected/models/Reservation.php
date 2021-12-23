@@ -183,12 +183,14 @@ class Reservation extends CActiveRecord
 	}
 
 	public function sendEmailToGuests() {
-		$mail = new PHPMailer(true);
-		$guestsEmails = explode(',',$this->guestsEmails);
-		$this->formatDate('d/m/Y');
+		if(!empty($this->guestsEmails)){
+			$mail = new PHPMailer(true);
+			$guestsEmails = explode(',',$this->guestsEmails);
+			$this->formatDate('d/m/Y');
 
-		$this->emailConfigurations($mail);
-		$this->fireEmail($mail,$guestsEmails);
+			$this->emailConfigurations($mail);
+			$this->fireEmail($mail,$guestsEmails);
+		}
 	}
 
 	private function emailConfigurations($mail) {                    

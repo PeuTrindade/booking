@@ -7,8 +7,8 @@ $('#Reservation_endTime').change(() => {
         ajaxEndTime: $('#Reservation_endTime').val(),
     }
 
-    $.post('http://localhost/booking/index.php/reservation',data,function(result,status){
-        console.log(result)
+    $.post('http://localhost/booking/index.php?r=reservation/teste',data,function(result,status){
+        console.log(result);
     });
 });
 
