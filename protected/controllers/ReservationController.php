@@ -119,8 +119,27 @@ class ReservationController extends Controller
 		return $namesArray;
 	}
 
-	public function actionTeste() {
-		echo 'oi';
+	public function actionAjaxCalc() {
+		$roomName = $_POST['ajaxRoomName'];
+		$startTime = new DateTime($_POST['ajaxStartTime']);
+		$endTime = new DateTime($_POST['ajaxEndTime']);
+
+		$findRoomByName = Room::model()->findByAttributes(array('name'=>$roomName));
+		$valuePerHour = $findRoomByName->valuePerHour;
+		echo $this->calcTotalAmount($startTime,$endTime,$valuePerHour);
+	}
+
+	private function calcTotalAmount($startTime,$endTime,$valuePerHour) {
+		$formatStartTime = $startTime->format('Hi');
+		$formatEndTime = $endTime->format('Hi');
+
+		$subtractTime = $startTime->diff($endTime,true);
+		$arrayTime = explode(':',$subtractTime->format('%H:%i%'));
+		$transformInMinutes = $arrayTime[0] * 60 + $arrayTime[1];
+
+		$calc = $transformInMinutes * ($valuePerHour / 60);
+		if($transformInMinutes >= 30)
+			return round($calc,2);
 	}
 	
 	// Uncomment the following methods and override them if needed

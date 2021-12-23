@@ -3,12 +3,13 @@
    
 $('#Reservation_endTime').change(() => {
     let data = {
+        ajaxRoomName: $('#Reservation_roomName').val(),
         ajaxStartTime: $('#Reservation_startTime').val(),
         ajaxEndTime: $('#Reservation_endTime').val(),
     }
 
-    $.post('http://localhost/booking/index.php?r=reservation/teste',data,function(result,status){
-        console.log(result);
+    $.post('http://localhost/booking/index.php?r=reservation/ajaxcalc',data,function(result,status){
+        $('#Reservation_totalAmount').val(result);
     });
 });
 
