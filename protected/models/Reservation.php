@@ -199,7 +199,7 @@ class Reservation extends CActiveRecord
 		$mail->SMTPSecure = 'tls';                 
     	$mail->SMTPAuth = true;                                  
     	$mail->Username = 'devpedrotrindade@gmail.com';                   
-    	$mail->Password = 'pedro2804';                           
+    	$mail->Password = '********';                           
     	$mail->Port = '587';     
 	}
 
