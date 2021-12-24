@@ -147,29 +147,38 @@ class Reservation extends CActiveRecord
 	} 
 
 	public function checkStartTimeIsAllow($attribute,$params) {
-		$reservationAtThisDate = self::model()->findAll('bookingDate=:bookingDate',array(':bookingDate'=>$this->bookingDate));
-		$formatStartTime = $this->returnFormatedTime($this->startTime,'His');
+		$searchForDateAndRoom = self::model()->findAllByAttributes(array('bookingDate'=>$this->bookingDate,'roomId'=>$this->roomId));
 		
-		foreach ($reservationAtThisDate as $key => $reservation) {
-			$reservationStartTime = $this->returnFormatedTime($reservation['startTime'],'His');
-			$reservationEndTime = $this->returnFormatedTime($reservation['endTime'],'His');
+		foreach ($searchForDateAndRoom as $key => $reservation) {
+			$reservationStartTime = $this->returnFormatedTime($reservation['startTime'],'Hi');
+			$reservationEndTime = $this->returnFormatedTime($reservation['endTime'],'Hi');
 
-			if($reservation['roomId'] === $this->roomId && $reservation['id'] !== $this->id) {
-				if($formatStartTime >= $reservationStartTime && $formatStartTime < $reservationEndTime)
+			if($reservation['id'] !== $this->id)
+				if($this->startTime >= $reservationStartTime && $this->startTime < $reservationEndTime)
 					$this->addError($attribute,'Horario ocupado!');
-			}
 		}
 	}
 
 	public function checkEndTimeIsAllow($attribute,$params) {
-		$formatStartTime = $this->returnFormatedTime($this->startTime,'His');
-		$formatEndTime = $this->returnFormatedTime($this->endTime,'His');
-		$countMinutes = $formatEndTime - $formatStartTime;
+		$searchForDateAndRoom = self::model()->findAllByAttributes(array('bookingDate'=>$this->bookingDate,'roomId'=>$this->roomId));
+		$startTime = new DateTime($this->startTime);
+		$endTime = new DateTime($this->endTime);
+		$subtractTime = $endTime->diff($startTime,true);
+		$formatedSubtractedTime = $subtractTime->format('%H:%i%');
 
-		if($formatEndTime <= $formatStartTime)
-			$this->addError($attribute,'Horario de termino deve ser maior que o de inicio');
-		else if($countMinutes < 3000)
+		foreach ($searchForDateAndRoom as $key => $reservation) {
+			$reservationStartTime = $this->returnFormatedTime($reservation['startTime'],'Hi');
+			$reservationEndTime = $this->returnFormatedTime($reservation['endTime'],'Hi');
+
+			if($reservation['id'] !== $this->id)
+				if($this->endTime > $reservationStartTime && $this->endTime <= $reservationEndTime)
+					$this->addError($attribute,'Horario ocupado!');
+		}
+
+		if($formatedSubtractedTime < '00:30')
 			$this->addError($attribute,'Tempo minimo de reserva deve ser de 30 minutos');
+		else if($endTime < $startTime)
+			$this->addError($attribute,'Horario de termino deve ser maior que o de inicio');
 	}
 
 	public function returnFormatedTime($value,$timeFormat) {

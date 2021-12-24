@@ -45,9 +45,9 @@ class ReservationController extends Controller
 			$model->attributes = $_POST['Reservation'];
 		
 			if($model->addCustomerAndRoomId() && $model->validate()){
-				$model->save();
+				//$model->save();
 				$model->sendEmailToGuests();
-				$this->redirect($this->createUrl('reservation/index'));
+				//$this->redirect($this->createUrl('reservation/index'));
 			}
 		}
 		$this->render('create',array('model'=>$model,'customersNames'=>$customersNames,'roomsNames'=>$roomsNames));
@@ -130,16 +130,13 @@ class ReservationController extends Controller
 	}
 
 	private function calcTotalAmount($startTime,$endTime,$valuePerHour) {
-		$formatStartTime = $startTime->format('Hi');
-		$formatEndTime = $endTime->format('Hi');
-
-		$subtractTime = $startTime->diff($endTime,true);
+		$subtractTime = $endTime->diff($startTime,true);
 		$arrayTime = explode(':',$subtractTime->format('%H:%i%'));
 		$transformInMinutes = $arrayTime[0] * 60 + $arrayTime[1];
 
 		$calc = $transformInMinutes * ($valuePerHour / 60);
 		if($transformInMinutes >= 30)
-			return round($calc,2);
+			return 'R$'.round($calc,2);
 	}
 	
 	// Uncomment the following methods and override them if needed
