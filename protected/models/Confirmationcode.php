@@ -133,13 +133,15 @@ class Confirmationcode extends CActiveRecord
 	}
 
 	private function validateCodeByDateAndTime() {
-		date_default_timezone_set('America/Sao_Paulo');
-		$currentDate = date('Y-m-d');
-		$currentTime = date('H:i:00');
-
 		$findReservationById = Reservation::model()->findByPk($this->reservationId);
 
-		if($findReservationById->bookingDate === $currentDate && $findReservationById->startTime === $currentTime)
+		$currentDateAndTime = new DateTime('now', new DateTimeZone('America/Sao_Paulo'));
+		$timeWithTolerance = new DateTime($findReservationById->startTime, new DateTimeZone('America/Sao_Paulo'));
+		$timeWithTolerance->add(new DateInterval('PT900S'));
+
+		if($findReservationById->bookingDate === $currentDateAndTime->format('Y-m-d') && 
+		   $currentDateAndTime->format('H:i:00') >= $findReservationById->startTime &&
+		   $currentDateAndTime->format('H:i:00') <= $timeWithTolerance->format('H:i:00'))
 			return true;
 		else 
 			return false;

@@ -45,9 +45,9 @@ class ReservationController extends Controller
 			$model->attributes = $_POST['Reservation'];
 		
 			if($model->addCustomerAndRoomId() && $model->validate()){
-				//$model->save();
+				$model->save();
 				$model->sendEmailToGuests();
-				//$this->redirect($this->createUrl('reservation/index'));
+				$this->redirect($this->createUrl('reservation/index'));
 			}
 		}
 		$this->render('create',array('model'=>$model,'customersNames'=>$customersNames,'roomsNames'=>$roomsNames));

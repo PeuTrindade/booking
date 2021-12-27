@@ -45,7 +45,6 @@ class Reservation extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('customerName,roomName,bookingDate,startTime,endTime,totalAmount', 'required'),
-			array('totalAmount', 'numerical'),
 			array('bookingDate, startTime, endTime, guestsEmails', 'safe'),
 			array('startTime','checkStartTimeIsAllow'),
 			array('endTime','checkEndTimeIsAllow'),
@@ -175,9 +174,13 @@ class Reservation extends CActiveRecord
 					$this->addError($attribute,'Horario ocupado!');
 		}
 
+		$this->checkTimeValues($attribute,$formatedSubtractedTime);
+	}
+
+	public function checkTimeValues($attribute,$formatedSubtractedTime) {
 		if($formatedSubtractedTime < '00:30')
 			$this->addError($attribute,'Tempo minimo de reserva deve ser de 30 minutos');
-		else if($endTime < $startTime)
+		else if($this->endTime < $this->startTime)
 			$this->addError($attribute,'Horario de termino deve ser maior que o de inicio');
 	}
 
