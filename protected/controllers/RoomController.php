@@ -1,7 +1,6 @@
 <?php
 
-class RoomController extends Controller
-{
+class RoomController extends Controller {
 	public function filters() {
 		return array(
 			'accessControl',
@@ -58,8 +57,8 @@ class RoomController extends Controller
 	public function actionUpdate($id){
 		$model = $this->loadRoom($id);
 
-		if(isset($model) && isset($id)){
-			if(isset($_POST['Room'])){
+		if(isset($model) && isset($id)) {
+			if(isset($_POST['Room'])) {
 				$model->attributes = $_POST['Room'];
 				$fieldFile = CUploadedFile::getInstance($model, 'image');
 				$model->beforeUploadImage($fieldFile);
@@ -79,7 +78,7 @@ class RoomController extends Controller
 	public function actionDelete($id) {
 		$model = $this->loadRoom($id);
 
-		if(isset($model) && isset($id)){
+		if(isset($model) && isset($id)) {
 			$model->delete();
 			$this->redirect($this->createUrl('room/index'));
 		} else {
@@ -90,7 +89,7 @@ class RoomController extends Controller
 	public function actionView($id) {
 		$model = $this->loadRoom($id);
 
-		if(isset($model) && isset($id)){
+		if(isset($model) && isset($id)) {
 			$this->render('view',array('model'=>$model));
 		} else {
 			throw new CHttpException(404,'Essa página requisitada não existe!');

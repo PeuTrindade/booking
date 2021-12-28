@@ -1,14 +1,15 @@
 <?php
-/* @var $this SiteController */
+
 Yii::app()->name = 'Booking';
-$this->pageTitle=Yii::app()->name . ' - Home';
+$this->pageTitle = Yii::app()->name . ' - Home';
+
 ?>
 
 <style>
-    <?php include "css/homePage/homePage.css"; ?>
+    <?php include 'css/homePage/homePage.css'; ?>
 </style>
 
-<section class="homeContainer">
+<section class='homeContainer'>
     <h1>Bem vindo(a), <?php echo Yii::app()->user->name; ?>!</h1>
-    <p>Genrencie o sistema de agendamento</p>
+    <p>Gerencie o sistema de agendamento</p>
 </section>

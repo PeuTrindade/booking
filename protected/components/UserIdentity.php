@@ -1,40 +1,37 @@
 <?php
 
-/**
- * UserIdentity represents the data needed to identity a user.
- * It contains the authentication method that checks if the provided
- * data can identity the user.
- */
-class UserIdentity extends CUserIdentity
-{
+class UserIdentity extends CUserIdentity {
 	private $id;
-	/**
-	 * Authenticates a user.
-	 * The example implementation makes sure if the username and password
-	 * are both 'demo'.
-	 * In practical applications, this should be changed to authenticate
-	 * against some persistent user identity storage (e.g. database).
-	 * @return boolean whether authentication succeeds.
-	 */
+	
 	public function authenticate() {
-		$username = strtolower($this->username);
-		$user = User::model()->find("LOWER(username)=?",array($username));
+		$findUserByUsername = User::model()->find('username=:username',array(':username'=>$this->username));
+		echo $this->password;
+		if($this->verifyUserExists($findUserByUsername) && $this->verifyPasswordIsValid($findUserByUsername)) {
+			$this->id = $findUserByUsername->id;	
+		 	$this->username = $findUserByUsername->username;
+		 	$this->errorCode = self::ERROR_NONE;
 
-		if($user === null){
-			$this->errorCode=self::ERROR_USERNAME_INVALID;
+			return $this->errorCode == self::ERROR_NONE;
 		}
-		else if(!$user->validatePassword($this->password)){
-			$this->errorCode=self::ERROR_PASSWORD_INVALID;
-		}
-		else {
-			$this->id = $user->id;	
-			$this->username = $user->username;
-			$this->errorCode=self::ERROR_NONE;
-		}
-		return $this->errorCode==self::ERROR_NONE;
 	}
 
-	public function getId(){
+	private function verifyUserExists($user) {
+		if(isset($user))
+			return true;
+		else 
+			$this->errorCode = self::ERROR_USERNAME_INVALID;
+	}
+
+	private function verifyPasswordIsValid($user) {
+		$isPasswordValid = $user->validatePassword($this->password);
+
+		if($isPasswordValid)
+			return true;
+		else 
+			$this->errorCode = self::ERROR_PASSWORD_INVALID;
+	}
+
+	public function getId() {
 		return $this->id;
 	}
 }

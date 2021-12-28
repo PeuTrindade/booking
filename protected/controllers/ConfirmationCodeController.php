@@ -1,7 +1,6 @@
 <?php
 
-class ConfirmationCodeController extends Controller
-{
+class ConfirmationCodeController extends Controller {
 	public function filters() {
 		return array(
 			'accessControl',
@@ -21,9 +20,9 @@ class ConfirmationCodeController extends Controller
 		);
 	}
 
-	public function actionIndex($guestEmail,$reservationId) {
-		$model = $this->loadCodeByGuestEmail($guestEmail,$reservationId);
-		
+	public function actionIndex($ge,$ri) {
+		$model = $this->loadCodeByGuestEmail($ge,$ri);
+	
 		if($model->validateCode())
 			$this->render('index',array('isValid'=>true));
 		else 
@@ -31,7 +30,7 @@ class ConfirmationCodeController extends Controller
 	}
 
 	private function loadCodeByGuestEmail($guestEmail,$reservationId) {
-		$model = Confirmationcode::model()->findByAttributes(array('guestEmail'=>$guestEmail,'reservationId'=>$reservationId));
+		$model = Confirmationcode::model()->findByAttributes(array('encryptedGuestEmail'=>$guestEmail,'reservationId'=>$reservationId));
 		return $model;
 	}
 

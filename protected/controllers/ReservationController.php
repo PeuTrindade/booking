@@ -1,7 +1,6 @@
 <?php
 
-class ReservationController extends Controller
-{
+class ReservationController extends Controller {
 	public function filters() {
 		return array(
 			'accessControl',
@@ -15,7 +14,7 @@ class ReservationController extends Controller
 				'users'=>array('?'),
 			),
 			array('allow', 
-				'actions'=>array('index','create','update','delete','view','teste'),
+				'actions'=>array('index','create','update','delete','view','ajaxcalc'),
 				'users'=>array('@'),
 			),
 		);
@@ -41,10 +40,11 @@ class ReservationController extends Controller
 		$customersNames = $this->returnArrayOfNames('Customer');
 		$roomsNames = $this->returnArrayOfNames('Room');
 
-		if(isset($_POST['Reservation'])){
+		if(isset($_POST['Reservation'])) {
 			$model->attributes = $_POST['Reservation'];
 		
-			if($model->addCustomerAndRoomId() && $model->validate()){
+			if($model->validate()) {
+				$model->addCustomerAndRoomId();
 				$model->save();
 				$model->sendEmailToGuests();
 				$this->redirect($this->createUrl('reservation/index'));
@@ -56,12 +56,11 @@ class ReservationController extends Controller
 	public function actionView($id) {
 		$model = $this->loadReservation($id);
 
-		if(isset($model) && isset($id)){
+		if(isset($model) && isset($id)) {
 			$model->formatDate('d/m/Y');
 			$this->render('view',array('model'=>$model));
-		} else {
+		} else
 			throw new CHttpException(404,'Essa página requisitada não existe!');
-		}
 	}
 
 	public function actionUpdate($id) {
@@ -73,15 +72,15 @@ class ReservationController extends Controller
 			if(isset($_POST['Reservation'])){
 				$model->attributes = $_POST['Reservation'];
 
-				if($model->addCustomerAndRoomId() && $model->validate()) {
+				if($model->validate()) {
+					$model->addCustomerAndRoomId();
 					$model->save();
 					$this->redirect($this->createUrl('reservation/view',array('id'=>$id)));
 				}
 			}
 			$this->render('update',array('model'=>$model,'customersNames'=>$customersNames,'roomsNames'=>$roomsNames));	
-		} else {
+		} else 
 			throw new CHttpException(404,'Essa página requisitada não existe!');
-		}
 	}
 
 	public function actionDelete($id) {
@@ -91,9 +90,8 @@ class ReservationController extends Controller
 			$this->deleteConfirmationCodes($id);
 			$model->delete();
 			$this->redirect($this->createUrl('reservation/index'));
-		} else {
+		} else
 			throw new CHttpException(404,'Essa página requisitada não existe!');
-		}
 	}
 
 	private function deleteConfirmationCodes($reservationId) {

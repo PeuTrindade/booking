@@ -1,7 +1,4 @@
-<?php
-/* @var $this RoomController */
-
-?>
+<?php ?>
 
 <style>
 	<?php include 'css/room/roomIndex.css'; ?>

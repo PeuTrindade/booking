@@ -1,7 +1,6 @@
 <?php
 
-class CustomerController extends Controller
-{
+class CustomerController extends Controller {
 	public function filters() {
 		return array(
 			'accessControl',
