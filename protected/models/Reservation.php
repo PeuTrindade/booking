@@ -64,20 +64,31 @@ class Reservation extends CActiveRecord {
 		return parent::model($className);
 	}
 
-	public function addCustomerAndRoomId() {
+	public function beforeDelete() {
+		$findConfirmationCodes = Confirmationcode::model()->findAll('reservationId=:reservationId',array(':reservationId'=>$this->id));
+		
+		foreach ($findConfirmationCodes as $key => $confirmationCode)
+			$confirmationCode->delete();
+
+		return parent::beforeDelete();
+	}
+
+	public function beforeValidate() {
 		$findCustomerByName = Customer::model()->find('name=:customerName',array(':customerName'=>$this->customerName));
 		$findRoomByName = Room::model()->find('name=:roomName',array(':roomName'=>$this->roomName));
 
 		$this->customerId = $findCustomerByName->id;
 		$this->roomId = $findRoomByName->id;
+
+		return parent::beforeValidate();
 	} 
 
 	public function checkStartTimeIsAllow($attribute,$params) {
 		$searchForDateAndRoom = self::model()->findAllByAttributes(array('bookingDate'=>$this->bookingDate,'roomId'=>$this->roomId));
 		
 		foreach ($searchForDateAndRoom as $key => $reservation) {
-			$reservationStartTime = $this->returnFormatedTime($reservation['startTime'],'Hi');
-			$reservationEndTime = $this->returnFormatedTime($reservation['endTime'],'Hi');
+			$reservationStartTime = $this->returnFormatedTime($reservation['startTime'],'H:i');
+			$reservationEndTime = $this->returnFormatedTime($reservation['endTime'],'H:i');
 
 			if($reservation['id'] !== $this->id)
 				if($this->startTime >= $reservationStartTime && $this->startTime < $reservationEndTime)
@@ -93,8 +104,8 @@ class Reservation extends CActiveRecord {
 		$formatedSubtractedTime = $subtractTime->format('%H:%i%');
 
 		foreach ($searchForDateAndRoom as $key => $reservation) {
-			$reservationStartTime = $this->returnFormatedTime($reservation['startTime'],'Hi');
-			$reservationEndTime = $this->returnFormatedTime($reservation['endTime'],'Hi');
+			$reservationStartTime = $this->returnFormatedTime($reservation['startTime'],'H:i');
+			$reservationEndTime = $this->returnFormatedTime($reservation['endTime'],'H:i');
 
 			if($reservation['id'] !== $this->id)
 				if($this->endTime > $reservationStartTime && $this->endTime <= $reservationEndTime)
@@ -116,7 +127,7 @@ class Reservation extends CActiveRecord {
 		return $time->format($timeFormat);
 	}
 
-	public function formatDate($dateFormat) {
+	public function formatBookingDate($dateFormat) {
 		$date = new DateTime($this->bookingDate);
 		$this->bookingDate = $date->format($dateFormat);
 	}
@@ -125,7 +136,7 @@ class Reservation extends CActiveRecord {
 		if(!empty($this->guestsEmails)){
 			$mail = new PHPMailer(true);
 			$guestsEmails = explode(',',$this->guestsEmails);
-			$this->formatDate('d/m/Y');
+			$this->formatBookingDate('d/m/Y');
 
 			$this->emailConfigurations($mail);
 			$this->fireEmail($mail,$guestsEmails);

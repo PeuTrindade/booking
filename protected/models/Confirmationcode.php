@@ -76,23 +76,41 @@ class Confirmationcode extends CActiveRecord {
 
 	private function validateCodeByDateAndTime() {
 		$findReservationById = Reservation::model()->findByPk($this->reservationId);
+		$validateCodeByDate = $this->validateCodeByDate($findReservationById);
+		$validateStartTime = $this->validateStartTime($findReservationById);
+		$validateTimeWithTolerance = $this->validateTimeWithTolerance($findReservationById);
 
-		$currentDateAndTime = new DateTime('now', new DateTimeZone('America/Sao_Paulo'));
-		$timeWithTolerance = new DateTime($findReservationById->startTime, new DateTimeZone('America/Sao_Paulo'));
-		$timeWithTolerance->add(new DateInterval('PT900S'));
-
-		if($findReservationById->bookingDate === $currentDateAndTime->format('Y-m-d') && 
-		   $currentDateAndTime->format('H:i:00') >= $findReservationById->startTime &&
-		   $currentDateAndTime->format('H:i:00') <= $timeWithTolerance->format('H:i:00'))
+		if($validateCodeByDate && $validateStartTime && $validateTimeWithTolerance)
 			return true;
 		else 
 			return false;
 	}
 
-	private function checkBookingDate($reservation,$currentDateAndTime) {
-		$currentDate = $currentDateAndTime->format('Y-m-d');
+	private function validateCodeByDate($reservation) {
+		$currentDate = $this->returnCurrentDate('Y-m-d');
 		
 		if($reservation->bookingDate === $currentDate)
+			return true;
+		else 
+			return false;
+	}
+
+	private function validateStartTime($reservation) {
+		$currentTime = $this->returnCurrentTime('H:i:00');
+		
+		if($currentTime >= $reservation->startTime)
+			return true;
+		else 
+			return false;
+	}
+
+	private function validateTimeWithTolerance($reservation) {
+		$currentTime = $this->returnCurrentTime('H:i:00');
+		$timeWithTolerance = new DateTime($reservation->startTime, new DateTimeZone('America/Sao_Paulo'));
+		$timeWithTolerance->add(new DateInterval('PT900S'));
+		$formatedTimeWithTolerance = $timeWithTolerance->format('H:i:00');
+
+		if($currentTime <= $formatedTimeWithTolerance)
 			return true;
 		else 
 			return false;
@@ -103,11 +121,21 @@ class Confirmationcode extends CActiveRecord {
 		$this->save();
 	}
 
+	private function returnCurrentDate($format) {
+		$currentDate = new DateTime('now');
+		return $currentDate->format($format);
+	}
+
+	private function returnCurrentTime($format) {
+		$currentTime = new DateTime('now',new DateTimeZone('America/Sao_Paulo'));
+		return $currentTime->format($format);
+	}
+
 	private function returnCustomUrl($params) {
 		$hostInfo = Yii::app()->request->hostInfo;
 		$scriptUrl = Yii::app()->request->scriptUrl;
-		$absoultePath = '?r=confirmationCode/index&';
-		$customPath = 'ge='.$params['guestEmail'].'&ri='.$params['reservationId'];
+		$absoultePath = '?r=confirmationCode/index';
+		$customPath = '&ge='.$params['guestEmail'].'&ri='.$params['reservationId'];
 		
 		return $hostInfo.$scriptUrl.$absoultePath.$customPath;
 	}

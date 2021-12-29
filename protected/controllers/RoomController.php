@@ -54,77 +54,42 @@ class RoomController extends Controller {
 		$this->render('create',array('model'=>$model));
 	}
 
-	public function actionUpdate($id){
+	public function actionUpdate($id) {
 		$model = $this->loadRoom($id);
 
-		if(isset($model) && isset($id)) {
-			if(isset($_POST['Room'])) {
-				$model->attributes = $_POST['Room'];
-				$fieldFile = CUploadedFile::getInstance($model, 'image');
-				$model->beforeUploadImage($fieldFile);
+		if(isset($_POST['Room'])) {
+			$model->attributes = $_POST['Room'];
+			$fieldFile = CUploadedFile::getInstance($model, 'image');
+			$model->beforeUploadImage($fieldFile);
 
-				if($model->validate()) {
-					$model->uploadImage($fieldFile);
-					$model->save();
-					$this->redirect($this->createUrl('room/view',array('id'=>$id)));
-				}
+			if($model->validate()) {
+				$model->uploadImage($fieldFile);
+				$model->save();
+				$this->redirect($this->createUrl('room/view',array('id'=>$id)));
 			}
-			$this->render('update',array('model'=>$model));	
-		} else {
-			throw new CHttpException(404,'Essa página requisitada não existe!');
 		}
+
+		$this->render('update',array('model'=>$model));	
 	}
 
 	public function actionDelete($id) {
 		$model = $this->loadRoom($id);
 
-		if(isset($model) && isset($id)) {
-			$model->delete();
-			$this->redirect($this->createUrl('room/index'));
-		} else {
-			throw new CHttpException(404,'Essa página requisitada não existe!');
-		}
+		$model->delete();
+		$this->redirect($this->createUrl('room/index'));
 	}
 
 	public function actionView($id) {
 		$model = $this->loadRoom($id);
-
-		if(isset($model) && isset($id)) {
-			$this->render('view',array('model'=>$model));
-		} else {
-			throw new CHttpException(404,'Essa página requisitada não existe!');
-		}
+		$this->render('view',array('model'=>$model));
 	}
 	
 	private function loadRoom($roomId) {
 		$model = Room::model()->findByPk($roomId);
-		return $model;
-	}
 
-	// Uncomment the following methods and override them if needed
-	/*
-	public function filters()
-	{
-		// return the filter configuration for this controller, e.g.:
-		return array(
-			'inlineFilterName',
-			array(
-				'class'=>'path.to.FilterClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
+		if(isset($model) && isset($roomId))
+			return $model;
+		else 
+			throw new CHttpException(404,'Essa página requisitada não existe!');
 	}
-
-	public function actions()
-	{
-		// return external action classes, e.g.:
-		return array(
-			'action1'=>'path.to.ActionClass',
-			'action2'=>array(
-				'class'=>'path.to.AnotherActionClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
-	}
-	*/
 }

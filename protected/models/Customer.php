@@ -51,6 +51,15 @@ class Customer extends CActiveRecord {
 		return parent::model($className);
 	}
 
+	public function beforeDelete() {
+		$findCustomers = Reservation::model()->findAll('customerId=:customerId',array(':customerId'=>$this->id));
+		
+		foreach ($findCustomers as $key => $customer)
+			$customer->delete();
+
+		return parent::beforeDelete();
+	}
+
 	public function checkCustomerEmail($attribute,$param) {
 		$searchExpression = Customer::model()->find('email=:customerEmail',array(':customerEmail'=>$this->email));
 			
@@ -58,7 +67,7 @@ class Customer extends CActiveRecord {
 			$this->addError($attribute,'Esse email já foi cadastrado!');
 	}
 
-	public function formatDate($dateFormat) {
+	public function formatBirthdayDate($dateFormat) {
 		$date = new DateTime($this->birthday);
 		$this->birthday = $date->format($dateFormat);
 	}

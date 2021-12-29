@@ -58,6 +58,24 @@ class Room extends CActiveRecord {
 		return parent::model($className);
 	}
 
+	public function beforeDelete() {
+		$findReservations = Reservation::model()->findAll('roomId=:roomId',array(':roomId'=>$this->id));
+		
+		foreach ($findReservations as $key => $reservation) {
+			$this->deleteConfirmationCodes($reservation->id);
+			$reservation->delete();
+		}
+
+		return parent::beforeDelete();
+	}
+
+	private function deleteConfirmationCodes($reservationId) {
+		$findConfirmationCodes = Confirmationcode::model()->findAll('reservationId=:reservationId',array(':reservationId'=>$reservationId));
+
+		foreach ($findConfirmationCodes as $key => $confirmationCode)
+			$confirmationCode->delete();
+	}
+
 	public function checkRoomName($attribute,$params) {
 		$searchExpression = self::model()->find('name=:roomName',array(':roomName'=>$this->name));
 			
