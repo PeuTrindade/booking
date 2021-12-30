@@ -5,7 +5,7 @@ class UserIdentity extends CUserIdentity {
 	
 	public function authenticate() {
 		$findUserByUsername = User::model()->find('username=:username',array(':username'=>$this->username));
-		echo $this->password;
+		
 		if($this->verifyUserExists($findUserByUsername) && $this->verifyPasswordIsValid($findUserByUsername)) {
 			$this->id = $findUserByUsername->id;	
 		 	$this->username = $findUserByUsername->username;
