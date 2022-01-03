@@ -26,10 +26,10 @@ class Room extends CActiveRecord {
 	public function attributeLabels() {
 		return array(
 			'id' => 'ID',
-			'name' => 'Name',
-			'description' => 'Description',
-			'image' => 'Image',
-			'valuePerHour' => 'Value Per Hour',
+			'name' => 'Nome',
+			'description' => 'Descrição',
+			'image' => 'Imagem',
+			'valuePerHour' => 'Valor por hora',
 		);
 	}
 

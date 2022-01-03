@@ -1,5 +1,7 @@
 <?php
-/* @var $this CustomerController */
+
+Yii::app()->name = 'Booking';
+$this->pageTitle = Yii::app()->name . ' - Clientes';
 
 ?>
 

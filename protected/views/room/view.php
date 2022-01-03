@@ -6,6 +6,9 @@ $image = $model->image;
 $description = $model->description;
 $valuePerHour = $model->valuePerHour;
 
+Yii::app()->name = 'Booking';
+$this->pageTitle = Yii::app()->name . ' - '.$name;
+
 ?>
 
 <style>

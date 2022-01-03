@@ -1,5 +1,8 @@
 <?php
-/* @var $this ReservationController */
+
+Yii::app()->name = 'Booking';
+$this->pageTitle = Yii::app()->name . ' - Reservas';
+
 ?>
 
 <style>

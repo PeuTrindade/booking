@@ -5,6 +5,10 @@ $email = $model->email;
 $personCode = $model->personCode;
 $phoneNumber = $model->phoneNumber;
 $birthday = $model->birthday;
+
+Yii::app()->name = 'Booking';
+$this->pageTitle = Yii::app()->name . ' - Cliente '.$id;
+
 ?>
 
 <style>

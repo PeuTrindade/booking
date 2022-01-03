@@ -9,6 +9,9 @@ $endTime = $model->endTime;
 $totalAmount = $model->totalAmount;
 $guestsEmails = $model->guestsEmails;
 
+Yii::app()->name = 'Booking';
+$this->pageTitle = Yii::app()->name . ' - Reserva '.$id;
+
 ?>
 
 <style>

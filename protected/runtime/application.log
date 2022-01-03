@@ -9171,3 +9171,129 @@ Stack trace:
 REQUEST_URI=/booking/index.php?r=reservation/update&id=59
 HTTP_REFERER=http://localhost/booking/index.php?r=reservation/update&id=59
 ---
+2022/01/03 11:47:45 [warning] [application] Failed to set unsafe attribute "image" of "Room".
+in C:\wamp\www\Booking\protected\controllers\RoomController.php (61)
+in C:\wamp\www\Booking\index.php (13)
+2022/01/03 12:06:26 [warning] [application] Failed to set unsafe attribute "image" of "Room".
+in C:\wamp\www\Booking\protected\controllers\RoomController.php (61)
+in C:\wamp\www\Booking\index.php (13)
+2022/01/03 12:06:38 [warning] [application] Failed to set unsafe attribute "image" of "Room".
+in C:\wamp\www\Booking\protected\controllers\RoomController.php (61)
+in C:\wamp\www\Booking\index.php (13)
+2022/01/03 12:06:51 [warning] [application] Failed to set unsafe attribute "image" of "Room".
+in C:\wamp\www\Booking\protected\controllers\RoomController.php (61)
+in C:\wamp\www\Booking\index.php (13)
+2022/01/03 12:06:59 [warning] [application] Failed to set unsafe attribute "image" of "Room".
+in C:\wamp\www\Booking\protected\controllers\RoomController.php (61)
+in C:\wamp\www\Booking\index.php (13)
+2022/01/03 13:20:48 [error] [exception.CHttpException.400] CHttpException: Your request is invalid. in C:\Users\pedri\yii\framework\web\CController.php:337
+Stack trace:
+#0 C:\Users\pedri\yii\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#2 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#4 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('index')
+#9 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('confirmationcod...')
+#10 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#11 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/booking/index.php?r=confirmationcode/index&guestEmail=pedrinhotrindade14@gmail.com
+---
+2022/01/03 13:20:48 [error] [exception.CHttpException.400] CHttpException: Your request is invalid. in C:\Users\pedri\yii\framework\web\CController.php:337
+Stack trace:
+#0 C:\Users\pedri\yii\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#2 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#4 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('index')
+#9 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('confirmationcod...')
+#10 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#11 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/booking/index.php?r=confirmationcode/index&guestEmail=pedrinhotrindade14@gmail.com
+---
+2022/01/03 13:21:02 [error] [exception.CHttpException.400] CHttpException: Your request is invalid. in C:\Users\pedri\yii\framework\web\CController.php:337
+Stack trace:
+#0 C:\Users\pedri\yii\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#2 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#4 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('index')
+#9 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('confirmationcod...')
+#10 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#11 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/booking/index.php?r=confirmationcode/index&ge=pedrinhotrindade14@gmail.com$ri=19
+---
+2022/01/03 13:21:09 [error] [exception.Error] Error: Call to a member function validateCode() on null in C:\wamp\www\Booking\protected\controllers\ConfirmationCodeController.php:26
+Stack trace:
+#0 [internal function]: ConfirmationCodeController->actionIndex('pedrinhotrindad...', '19')
+#1 C:\Users\pedri\yii\framework\web\actions\CAction.php(115): ReflectionMethod->invokeArgs(Object(ConfirmationCodeController), Array)
+#2 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ConfirmationCodeController), Object(ReflectionMethod), Array)
+#3 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#5 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#7 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('index')
+#12 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('confirmationcod...')
+#13 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/booking/index.php?r=confirmationcode/index&ge=pedrinhotrindade14@gmail.com&ri=19
+---
+2022/01/03 13:21:25 [error] [exception.Error] Error: Call to a member function validateCode() on null in C:\wamp\www\Booking\protected\controllers\ConfirmationCodeController.php:26
+Stack trace:
+#0 [internal function]: ConfirmationCodeController->actionIndex('pedrinhotrindad...', '61')
+#1 C:\Users\pedri\yii\framework\web\actions\CAction.php(115): ReflectionMethod->invokeArgs(Object(ConfirmationCodeController), Array)
+#2 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ConfirmationCodeController), Object(ReflectionMethod), Array)
+#3 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#5 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#7 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('index')
+#12 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('confirmationcod...')
+#13 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/booking/index.php?r=confirmationcode/index&ge=pedrinhotrindade14@gmail.com&ri=61
+---
+2022/01/03 13:21:39 [error] [exception.Error] Error: Call to a member function validateCode() on null in C:\wamp\www\Booking\protected\controllers\ConfirmationCodeController.php:26
+Stack trace:
+#0 [internal function]: ConfirmationCodeController->actionIndex('caec3ea750e0692...', '61')
+#1 C:\Users\pedri\yii\framework\web\actions\CAction.php(115): ReflectionMethod->invokeArgs(Object(ConfirmationCodeController), Array)
+#2 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ConfirmationCodeController), Object(ReflectionMethod), Array)
+#3 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#5 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\Users\pedri\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#7 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\Users\pedri\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): CController->run('index')
+#12 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('confirmationcod...')
+#13 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 C:\wamp\www\Booking\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/booking/index.php?r=confirmationcode/index&ge=caec3ea750e06929a67eaa6b69539669&ri=61
+---

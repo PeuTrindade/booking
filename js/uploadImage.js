@@ -1,18 +1,13 @@
-$(document).ready(() => {
+let imageFileName = $('#imageInfo').val();
+let imageDivChildrens = $('#imageRow').children();
+let imageLabel = imageDivChildrens[1];
 
-let imageInfo = $('#imageInfo')[0].value;
-let imageRow = Array.from($('#imageRow')[0].children);
-let label = imageRow[1];
-
-
-if(imageInfo){
-    label.innerText = 'Imagem selecionada: ' + imageInfo;
-} else {
-    label.innerText = 'Nenhuma imagem selecionada';
-}
+if(imageFileName)
+    imageLabel.innerText = 'Imagem selecionada: ' + imageFileName;
+else 
+    imageLabel.innerText = 'Nenhuma imagem selecionada';
 
 $('#Room_image').change((e) => {
-    label.innerText = 'Imagem selecionada: ' + event.srcElement.files[0].name;
-});
-
+    let fileName = e.target.files[0].name;
+    imageLabel.innerText = 'Imagem selecionada: ' + fileName;
 });

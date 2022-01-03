@@ -1,4 +1,9 @@
-<?php  ?>
+<?php  
+
+Yii::app()->name = 'Booking';
+$this->pageTitle = Yii::app()->name . ' - Criar sala';
+
+?>
 
 <style>
     <?php include 'css/room/roomCreate.css'; ?>

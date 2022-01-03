@@ -1,5 +1,8 @@
 <?php
 
+Yii::app()->name = 'Booking';
+$this->pageTitle = Yii::app()->name . ' - Atualizar cliente';
+
 ?>
 
 <style>

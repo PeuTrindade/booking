@@ -1,4 +1,9 @@
-<?php  ?>
+<?php  
+
+Yii::app()->name = 'Booking';
+$this->pageTitle = Yii::app()->name . ' - Atualizar sala';
+
+?>
 
 <style>
     <?php include 'css/room/roomUpdate.css'; ?>

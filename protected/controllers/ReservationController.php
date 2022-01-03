@@ -112,6 +112,7 @@ class ReservationController extends Controller {
 
 		$findRoomByName = Room::model()->findByAttributes(array('name'=>$roomName));
 		$valuePerHour = $findRoomByName->valuePerHour;
+
 		echo $this->calcTotalAmount($startTime,$endTime,$valuePerHour);
 	}
 
