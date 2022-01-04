@@ -42,8 +42,8 @@ class ReservationController extends Controller {
 
 		if(isset($_POST['Reservation'])) {
 			$model->attributes = $_POST['Reservation'];
-		
-			if($model->validate()) {
+			
+			if($model->validate()) {	
 				$model->save();
 				$model->sendEmailToGuests();
 				$this->redirect($this->createUrl('reservation/index'));
@@ -55,9 +55,11 @@ class ReservationController extends Controller {
 
 	public function actionView($id) {
 		$model = $this->loadReservation($id);
-
 		$model->formatBookingDate('d/m/Y');
-		$this->render('view',array('model'=>$model));
+		$customerName = $model->returnCustomerName($model->customerId);
+		$roomName = $model->returnRoomName($model->roomId);
+
+		$this->render('view',array('model'=>$model,'customerName'=>$customerName,'roomName'=>$roomName));
 	}
 
 	public function actionUpdate($id) {
@@ -98,19 +100,21 @@ class ReservationController extends Controller {
 		$items = $model::model()->findAll();
 
 		foreach ($items as $key => $value) {
+			$itemId = $value['id'];
 			$itemName = $value['name'];
-			array_push($namesArray,array($itemName=>$itemName));
+
+			array_push($namesArray,array($itemId=>$itemName));
 		}
 
 		return $namesArray;
 	}
 
 	public function actionAjaxCalc() {
-		$roomName = $_POST['ajaxRoomName'];
+		$roomId = $_POST['ajaxRoomId'];
 		$startTime = new DateTime($_POST['ajaxStartTime']);
 		$endTime = new DateTime($_POST['ajaxEndTime']);
 
-		$findRoomByName = Room::model()->findByAttributes(array('name'=>$roomName));
+		$findRoomByName = Room::model()->findByPk($roomId);
 		$valuePerHour = $findRoomByName->valuePerHour;
 
 		echo $this->calcTotalAmount($startTime,$endTime,$valuePerHour);

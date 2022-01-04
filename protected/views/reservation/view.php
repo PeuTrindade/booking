@@ -1,8 +1,6 @@
 <?php 
 
 $id = $model->id;
-$customerName = $model->customerName;
-$roomName = $model->roomName;
 $bookingDate = $model->bookingDate;
 $startTime = $model->startTime;
 $endTime = $model->endTime;

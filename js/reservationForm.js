@@ -3,7 +3,7 @@ const url = window.location.origin + window.location.pathname + search;
 
 $('#Reservation_endTime').add($('#Reservation_startTime')).change(() => {
     let data = {
-        ajaxRoomName: $('#Reservation_roomName').val(),
+        ajaxRoomId: $('#Reservation_roomId').val(),
         ajaxStartTime: $('#Reservation_startTime').val(),
         ajaxEndTime: $('#Reservation_endTime').val(),
     }

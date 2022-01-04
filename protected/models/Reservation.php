@@ -14,7 +14,7 @@ class Reservation extends CActiveRecord {
 
 	public function rules() {
 		return array(
-			array('customerName,roomName,bookingDate,startTime,endTime,totalAmount', 'required'),
+			array('customerId,roomId,bookingDate,startTime,endTime,totalAmount', 'required'),
 			array('bookingDate, startTime, endTime, guestsEmails', 'safe'),
 			array('startTime','checkStartTimeIsAllow'),
 			array('endTime','checkEndTimeIsAllow'),
@@ -73,15 +73,15 @@ class Reservation extends CActiveRecord {
 		return parent::beforeDelete();
 	}
 
-	public function beforeValidate() {
-		$findCustomerByName = Customer::model()->find('name=:customerName',array(':customerName'=>$this->customerName));
-		$findRoomByName = Room::model()->find('name=:roomName',array(':roomName'=>$this->roomName));
+	public function returnCustomerName($customerId) {
+		$customer = Customer::model()->findByPk($customerId);
+		return $customer->name;
+	}
 
-		$this->customerId = $findCustomerByName->id;
-		$this->roomId = $findRoomByName->id;
-
-		return parent::beforeValidate();
-	} 
+	public function returnRoomName($roomId) {
+		$room = Room::model()->findByPk($roomId);
+		return $room->name;
+	}
 
 	public function checkStartTimeIsAllow($attribute,$params) {
 		$searchForDateAndRoom = self::model()->findAllByAttributes(array('bookingDate'=>$this->bookingDate,'roomId'=>$this->roomId));
