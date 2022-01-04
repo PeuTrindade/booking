@@ -114,8 +114,8 @@ class ReservationController extends Controller {
 		$startTime = new DateTime($_POST['ajaxStartTime']);
 		$endTime = new DateTime($_POST['ajaxEndTime']);
 
-		$findRoomByName = Room::model()->findByPk($roomId);
-		$valuePerHour = $findRoomByName->valuePerHour;
+		$findRoomById = Room::model()->findByPk($roomId);
+		$valuePerHour = $findRoomById->valuePerHour;
 
 		echo $this->calcTotalAmount($startTime,$endTime,$valuePerHour);
 	}

@@ -9540,3 +9540,6 @@ Stack trace:
 REQUEST_URI=/booking/index.php?r=reservation/view&id=62
 HTTP_REFERER=http://localhost/booking/index.php?r=reservation/index
 ---
+2022/01/04 14:43:27 [warning] [application] Failed to set unsafe attribute "image" of "Room".
+in C:\wamp\www\Booking\protected\controllers\RoomController.php (61)
+in C:\wamp\www\Booking\index.php (13)
