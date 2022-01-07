@@ -7,9 +7,10 @@ class Customer extends CActiveRecord {
 
 	public function rules() {
 		return array(
-			array('name,email,personCode,phoneNumber,birthday','required'),
-			array('personCode, phoneNumber', 'numerical', 'integerOnly'=>true),
+			array('name,email,personCode,phoneNumber,birthday','required','message'=>'{attribute} não pode estar em branco.'),
+			array('personCode, phoneNumber', 'numerical', 'integerOnly'=>true,'message'=>'{attribute} deve ser um número inteiro.'),
 			array('name, email', 'length', 'max'=>255),
+			array('email','email','message'=>'{attribute} inválido.'),
 			array('email','checkCustomerEmail'),
 			array('id, name, personCode, email, phoneNumber, birthday', 'safe', 'on'=>'search'),
 		);
@@ -24,11 +25,11 @@ class Customer extends CActiveRecord {
 	public function attributeLabels() {
 		return array(
 			'id' => 'ID',
-			'name' => 'Name',
-			'personCode' => 'Person Code',
+			'name' => 'Nome',
+			'personCode' => 'CPF/CNPJ',
 			'email' => 'Email',
-			'phoneNumber' => 'Phone Number',
-			'birthday' => 'Birthday',
+			'phoneNumber' => 'Telefone',
+			'birthday' => 'Data de nascimento',
 		);
 	}
 

@@ -14,7 +14,7 @@ class Reservation extends CActiveRecord {
 
 	public function rules() {
 		return array(
-			array('customerId,roomId,bookingDate,startTime,endTime,totalAmount', 'required'),
+			array('customerId,roomId,bookingDate,startTime,endTime,totalAmount', 'required','message'=>'{attribute} não pode estar em branco.'),
 			array('bookingDate, startTime, endTime, guestsEmails', 'safe'),
 			array('startTime','checkStartTimeIsAllow'),
 			array('endTime','checkEndTimeIsAllow'),
@@ -33,13 +33,13 @@ class Reservation extends CActiveRecord {
 	public function attributeLabels() {
 		return array(
 			'id' => 'ID',
-			'customerId' => 'Customer',
-			'roomId' => 'Room',
-			'bookingDate' => 'Booking Date',
-			'startTime' => 'Start Time',
-			'endTime' => 'End Time',
-			'totalAmount' => 'Total Amount',
-			'guestsEmails' => 'Guests Emails',
+			'customerId' => 'Cliente',
+			'roomId' => 'Sala',
+			'bookingDate' => 'Data da reserva',
+			'startTime' => 'Horário de início',
+			'endTime' => 'Horário de término',
+			'totalAmount' => 'Valor total',
+			'guestsEmails' => 'Email dos visitantes',
 		);
 	}
 

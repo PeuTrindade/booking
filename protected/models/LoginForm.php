@@ -7,13 +7,17 @@ class LoginForm extends CFormModel {
 
 	public function rules() {
 		return array(
-			array('username, password', 'required'),
+			array('username, password', 'required','message'=>'{attribute} não pode estar em branco.'),
 			array('password', 'authenticate'),
 		);
 	}
 
 	public function attributeLabels() {
-		return array();
+		return array(
+			'id'=>'id',
+			'username'=>'Usuário',
+			'password'=>'Senha',
+		);
 	}
 
 	public function authenticate($attribute,$params) {

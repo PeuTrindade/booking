@@ -7,11 +7,11 @@ class Room extends CActiveRecord {
 
 	public function rules() {
 		return array(
-			array('name,description,valuePerHour','required'),
-			array('valuePerHour', 'numerical', 'integerOnly'=>true),
+			array('name,description,valuePerHour','required','message'=>'{attribute} não pode estar em branco.'),
+			array('valuePerHour', 'numerical', 'message'=>'{attribute} deve ser um valor numérico.'),
 			array('name', 'length', 'max'=>55),
 			array('name','checkRoomName'),
-			array('image', 'required','on'=>'create'),
+			array('image', 'required','on'=>'create','message'=>'{attribute} não pode estar em branco.'),
 			array('image','file','types'=>'jpg, gif, png', 'allowEmpty'=>false,'on'=>'create'),
 			array('id, name, description, image, valuePerHour', 'safe', 'on'=>'search'),
 		);
