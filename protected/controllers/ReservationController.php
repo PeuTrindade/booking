@@ -121,12 +121,22 @@ class ReservationController extends Controller {
 	}
 
 	private function calcTotalAmount($startTime,$endTime,$valuePerHour) {
-		$subtractTime = $endTime->diff($startTime,true);
-		$arrayTime = explode(':',$subtractTime->format('%H:%i%'));
-		$transformInMinutes = $arrayTime[0] * 60 + $arrayTime[1];
+		$hoursToMinutes = $this->transformHoursToMinutes($startTime,$endTime);
+		$calc = $hoursToMinutes * ($valuePerHour / 60);
 
-		$calc = $transformInMinutes * ($valuePerHour / 60);
-		if($transformInMinutes >= 30)
+		if($endTime < $startTime)
+			return null;
+		else if($hoursToMinutes >= 30)
 			return 'R$'.round($calc,2);
+	}
+
+	private function transformHoursToMinutes($startTime,$endTime) {
+		$timeDifference = $endTime->diff($startTime,true);
+		$explodedTime = explode(':',$timeDifference->format('%H:%i%'));
+		$hours = $explodedTime[0];
+		$minutes = $explodedTime[1];
+
+		$hoursToMinutes = $hours * 60 + $minutes;
+		return $hoursToMinutes;
 	}
 }

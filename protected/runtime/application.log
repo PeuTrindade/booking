@@ -9648,3 +9648,51 @@ Stack trace:
 REQUEST_URI=/booking/index.php?r=customer/create
 HTTP_REFERER=http://localhost/booking/index.php?r=customer/index
 ---
+2022/01/10 11:13:05 [error] [php] Object of class DateTime could not be converted to string (C:\wamp\www\Booking\protected\controllers\ReservationController.php:121)
+Stack trace:
+#0 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(49): ReservationController->actionAjaxCalc()
+#1 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): ReservationController->runAction()
+#3 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\Users\pedri\yii\framework\web\CController.php(1148): CAccessControlFilter->filter()
+#5 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): ReservationController->filterAccessControl()
+#6 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#7 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\Users\pedri\yii\framework\web\CController.php(265): ReservationController->runActionWithFilters()
+#9 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): ReservationController->run()
+#10 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#12 C:\wamp\www\Booking\index.php(13): CWebApplication->run()
+REQUEST_URI=/booking/index.php?r=reservation/ajaxcalc
+in C:\wamp\www\Booking\protected\controllers\ReservationController.php (121)
+in C:\wamp\www\Booking\index.php (13)
+2022/01/10 11:13:42 [error] [php] Object of class DateTime could not be converted to string (C:\wamp\www\Booking\protected\controllers\ReservationController.php:121)
+Stack trace:
+#0 C:\Users\pedri\yii\framework\web\actions\CInlineAction.php(49): ReservationController->actionAjaxCalc()
+#1 C:\Users\pedri\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(134): ReservationController->runAction()
+#3 C:\Users\pedri\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\Users\pedri\yii\framework\web\CController.php(1148): CAccessControlFilter->filter()
+#5 C:\Users\pedri\yii\framework\web\filters\CInlineFilter.php(58): ReservationController->filterAccessControl()
+#6 C:\Users\pedri\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#7 C:\Users\pedri\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\Users\pedri\yii\framework\web\CController.php(265): ReservationController->runActionWithFilters()
+#9 C:\Users\pedri\yii\framework\web\CWebApplication.php(282): ReservationController->run()
+#10 C:\Users\pedri\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\Users\pedri\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#12 C:\wamp\www\Booking\index.php(13): CWebApplication->run()
+REQUEST_URI=/booking/index.php?r=reservation/ajaxcalc
+in C:\wamp\www\Booking\protected\controllers\ReservationController.php (121)
+in C:\wamp\www\Booking\index.php (13)
+2022/01/10 12:13:22 [warning] [application] Failed to set unsafe attribute "image" of "Room".
+in C:\wamp\www\Booking\protected\controllers\RoomController.php (61)
+in C:\wamp\www\Booking\index.php (13)
+2022/01/10 12:13:26 [warning] [application] Failed to set unsafe attribute "image" of "Room".
+in C:\wamp\www\Booking\protected\controllers\RoomController.php (61)
+in C:\wamp\www\Booking\index.php (13)
+2022/01/10 12:13:28 [warning] [application] Failed to set unsafe attribute "image" of "Room".
+in C:\wamp\www\Booking\protected\controllers\RoomController.php (61)
+in C:\wamp\www\Booking\index.php (13)
+2022/01/10 12:13:36 [warning] [application] Failed to set unsafe attribute "image" of "Room".
+in C:\wamp\www\Booking\protected\controllers\RoomController.php (61)
+in C:\wamp\www\Booking\index.php (13)
